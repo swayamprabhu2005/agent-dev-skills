@@ -95,10 +95,14 @@ def parse_simple_yaml(text):
 
 def dump_simple_yaml(data):
     lines = []
+    if "title" in data and data["title"]:
+        lines.append(f'title: "{data["title"]}"')
     lines.append(f"version: {data.get('version', 1)}")
     lines.append(f"status: {data.get('status', 'DRAFT')}")
     approved = data.get('approved_version')
     lines.append(f"approved_version: {approved if approved is not None else 'null'}")
+    if "approval_notes" in data and data["approval_notes"]:
+        lines.append(f'approval_notes: "{data["approval_notes"]}"')
     lines.append(f'updated_at: "{data.get("updated_at", "")}"')
     lines.append(f"open_questions_count: {data.get('open_questions_count', 0)}")
     lines.append(f"unresolved_conflicts: {data.get('unresolved_conflicts', 0)}")
@@ -113,7 +117,6 @@ def load_state(state_file):
     try:
         content = state_file.read_text(encoding="utf-8")
         parsed = parse_simple_yaml(content)
-        # Merge with defaults
         res = dict(DEFAULT_STATE)
         res.update(parsed)
         return res
@@ -130,6 +133,8 @@ def main():
     parser = argparse.ArgumentParser(description="Manage Project Blueprint workflow state.")
     parser.add_argument("action", choices=["status", "init", "request-review", "approve", "request-changes", "start-implementation"], help="Workflow action")
     parser.add_argument("--dir", default=".", help="Base project directory")
+    parser.add_argument("--title", help="Project title for blueprint initialization")
+    parser.add_argument("--notes", help="Optional notes or rationale for review or approval")
     parser.add_argument("--json", action="store_true", help="Output state as JSON")
     args = parser.parse_args()
 
@@ -141,6 +146,8 @@ def main():
             print(f"[WARN] State file already exists at: {state_file}")
         else:
             state = dict(DEFAULT_STATE)
+            if args.title:
+                state["title"] = args.title
             save_state(state_file, state)
             print(f"[OK] Initialized Project Blueprint state file: {state_file}")
         return
@@ -162,15 +169,20 @@ def main():
     elif args.action == "approve":
         state["status"] = "APPROVED"
         state["approved_version"] = state["version"]
+        if args.notes:
+            state["approval_notes"] = args.notes
         save_state(state_file, state)
         print(f"[OK] Blueprint v{state['version']} is officially APPROVED. Implementation unlocked.")
 
     elif args.action == "request-changes":
         state["status"] = "CHANGES_REQUESTED"
         state["version"] += 1
-        # Unset approved version until new version is approved
+        state["approved_version"] = None
+        state.pop("approval_notes", None)
+        for k in state.get("documents", {}):
+            state["documents"][k] = "DRAFT"
         save_state(state_file, state)
-        print(f"[OK] State set to CHANGES_REQUESTED. Incremented blueprint version to v{state['version']}.")
+        print(f"[OK] State set to CHANGES_REQUESTED. Incremented blueprint version to v{state['version']}, cleared approved version, and locked implementation.")
 
     elif args.action == "start-implementation":
         if state.get("status") != "APPROVED" and state.get("status") != "IMPLEMENTATION_READY":

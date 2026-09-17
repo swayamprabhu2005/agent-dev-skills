@@ -173,6 +173,17 @@ python skill/scripts/blueprint-state.py start-implementation --dir .blueprint
 
 Project Blueprint works across all major agentic programming environments:
 
+| Platform | Core Methodology | Skill Discovery Path | Invocation Mode | Questioning Mode | Status |
+| :--- | :---: | :--- | :--- | :--- | :--- |
+| **Google Antigravity** | ✅ Supported | `.agents/skills/` or `~/.gemini/config/` | Model-Driven (Progressive Disclosure) / Direct Prompt | Native `ask_question` tool / Chat | **Verified** |
+| **Claude Code** | ✅ Supported | `.claude/skills/` or `~/.claude/skills/` | Model-Driven / Prompt | Direct CLI turn interrogation | **Verified** |
+| **Cursor** | ✅ Supported | `.cursor/skills/` or `.cursor/rules/*.mdc` | Model-Driven / Prompt | Chat / Composer turn | **Verified** |
+| **OpenAI Codex** | ✅ Supported | `.codex/skills/` or `AGENTS.md` | Model-Driven / Direct `$command` | Conversation turn | **Verified** |
+| **Generic Agent Systems** | ✅ Supported | Runtime dependent (`.skills/`) | Platform dependent | Standard prompt input | **Standards-Compatible** |
+
+> [!NOTE]
+> **Invocation vs. Background Hooks:** Project Blueprint is invoked **prior to implementation** via model decision matching (progressive disclosure when starting a multi-step project) or direct user instruction. It does not rely on background hooks.
+
 ### Google Antigravity
 Copy or symlink `integrations/antigravity` into your Antigravity plugins directory or load the skill directly from `skill/SKILL.md`.
 * Native support for `ask_question` tool for interactive clarification.

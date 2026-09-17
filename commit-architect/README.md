@@ -100,13 +100,16 @@ Commit Architect establishes natural, concise developer language as the universa
 
 Commit Architect features a **single canonical methodology** (`skill/SKILL.md`) wrapped in thin platform-specific adapters:
 
-| Platform | Core Methodology | Native Skill Discovery | Native Rules Support | Status |
-| :--- | :---: | :---: | :---: | :--- |
-| **Google Antigravity** | ✅ Supported | `.agents/skills/` or `~/.gemini/config/` | `AGENTS.md` / `GEMINI.md` | **Verified Support** |
-| **Claude Code** | ✅ Supported | `.claude/skills/` or `~/.claude/skills/` | `CLAUDE.md` | **Verified Support** |
-| **Cursor** | ✅ Supported | `.cursor/skills/` or `~/.cursor/skills/` | `.cursor/rules/*.mdc` | **Verified Support** |
-| **OpenAI Codex** | ✅ Supported | `.codex/skills/` or `.agents/skills/` | `AGENTS.md` | **Verified Support** |
-| **Generic Agent Systems** | ✅ Supported | Runtime dependent (`.skills/`) | Platform dependent | **Standards-Compatible** |
+| Platform | Core Methodology | Skill Discovery Path | Invocation Mode | Lifecycle Automation | Status |
+| :--- | :---: | :--- | :--- | :--- | :--- |
+| **Google Antigravity** | ✅ Supported | `.agents/skills/` or `~/.gemini/config/` | Model-Driven (Progressive Disclosure) / Direct Prompt | Manual / Workflow sequencing | **Verified** |
+| **Claude Code** | ✅ Supported | `.claude/skills/` or `~/.claude/skills/` | Model-Driven / Prompt | Manual / Workflow sequencing | **Verified** |
+| **Cursor** | ✅ Supported | `.cursor/skills/` or `.cursor/rules/*.mdc` | Model-Driven / Prompt | Ambient rule matching | **Verified** |
+| **OpenAI Codex** | ✅ Supported | `.codex/skills/` or `AGENTS.md` | Model-Driven / Direct `$command` | Manual / Prompt sequencing | **Verified** |
+| **Generic Agent Systems** | ✅ Supported | Runtime dependent (`.skills/`) | Platform dependent | Platform dependent | **Standards-Compatible** |
+
+> [!NOTE]
+> **Invocation vs. Automatic Hooks:** Across all platforms, Commit Architect operates via **model-driven invocation** (the agent recognizes when a multi-step task requires commit architecture via progressive disclosure) or direct user invocation. It does not rely on opaque or unsupported automatic post-turn hooks.
 
 ---
 

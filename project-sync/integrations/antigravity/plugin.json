@@ -1,0 +1,7 @@
+{
+  "name": "project-sync",
+  "description": "Reconcile README.md and .gitignore with meaningful software implementation changes and provide a completion summary.",
+  "version": "0.1.0",
+  "author": "SWAYAM KIRAN PRABHU",
+  "license": "MIT"
+}

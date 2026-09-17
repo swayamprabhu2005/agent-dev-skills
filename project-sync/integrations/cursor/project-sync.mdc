@@ -1,0 +1,26 @@
+---
+description: Post-implementation synchronization of README.md and .gitignore
+globs: *
+alwaysApply: false
+---
+
+# Project Sync Rule for Cursor
+
+After completing and validating a meaningful coding implementation iteration:
+
+1. **Evaluate Documentation Impact:**
+   - Did public features, CLI commands, setup steps, or environment variables change?
+   - If yes, make minimal targeted edits to `README.md` to keep it accurate.
+   - Do NOT rewrite unrelated sections or introduce stylistic rephrasings.
+
+2. **Evaluate Ignore Rules:**
+   - Were new persistent generated build files or local caches created?
+   - If yes, add precise, narrow rules to `.gitignore`.
+   - Never use `.gitignore` as a trash can for temporary files (clean them up instead).
+
+3. **Provide Completion Summary:**
+   - State what was implemented.
+   - Categorize status of `README.md` and `.gitignore` (Updated / No changes required).
+   - Report validation outcome.
+
+Reference `.cursor/skills/project-sync/SKILL.md` for full instructions.

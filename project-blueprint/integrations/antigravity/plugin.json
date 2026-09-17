@@ -1,0 +1,7 @@
+{
+  "name": "project-blueprint",
+  "description": "Pre-implementation planning and approval skill. Transforms rough ideas into structured PRD, TRD, UI/UX, Schema, and Flow specs before coding.",
+  "version": "0.1.0",
+  "author": "SWAYAM KIRAN PRABHU",
+  "license": "MIT"
+}

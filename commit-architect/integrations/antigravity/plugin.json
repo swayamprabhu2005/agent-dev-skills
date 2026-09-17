@@ -1,0 +1,7 @@
+{
+  "name": "commit-architect",
+  "description": "Architect clean, logical Git commit histories for software engineering tasks.",
+  "version": "0.1.0",
+  "author": "SWAYAM KIRAN PRABHU",
+  "license": "MIT"
+}

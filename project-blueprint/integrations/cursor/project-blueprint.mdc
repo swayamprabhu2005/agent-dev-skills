@@ -1,0 +1,21 @@
+---
+description: Pre-implementation specification and approval gate before coding
+globs: *
+alwaysApply: false
+---
+
+# Project Blueprint Rule for Cursor
+
+Before implementing any substantial new project, major full-stack feature, or architectural change:
+
+1. **Do NOT write code immediately:** Engage the user in interactive clarification (1-2 high-impact questions at a time).
+2. **Generate the 5 Blueprint Artifacts:**
+   - `PRD.md` (Product Requirements with `REQ-xxx` IDs)
+   - `TRD.md` (Architecture with Mermaid diagrams)
+   - `UI_UX.md` (Visual design and component state matrix)
+   - `BACKEND_SCHEMA.md` (Database entities with Mermaid ER diagram)
+   - `APP_FLOW.md` (User journeys with Mermaid flowchart)
+3. **Execute Cross-Document Consistency Check:** Ensure documents agree; halt if a contradiction is detected.
+4. **Enforce the Strict Approval Gate:** Implementation remains completely blocked until the user explicitly responds with `"Approved"` or equivalent authorization.
+
+Reference `.cursor/skills/project-blueprint/SKILL.md` for complete procedures.

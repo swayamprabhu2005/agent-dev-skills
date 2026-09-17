@@ -1,4 +1,4 @@
-# MYSKILLS 🛠️
+# agent-dev-skills
 
 > **A curated collection of independent, cross-platform Agent Skills for disciplined software engineering with AI coding assistants.**
 

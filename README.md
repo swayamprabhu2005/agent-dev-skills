@@ -296,7 +296,7 @@ For specific contribution guidelines, see:
 
 ## Licensing
 
-All repositories and artifacts within MYSKILLS are distributed under the terms of the **MIT License**.
+All repositories and artifacts within agent-dev-skills are distributed under the terms of the **MIT License**.
 
 ```text
 MIT License
@@ -331,7 +331,7 @@ See individual repository license files:
 * **Project Status:** Independent Open-Source Software
 
 ### Third-Party Disclaimers
-MYSKILLS is an independent open-source developer toolchain. It is not affiliated with, sponsored by, endorsed by, or officially associated with:
+agent-dev-skills is an independent open-source developer toolchain. It is not affiliated with, sponsored by, endorsed by, or officially associated with:
 * Google LLC or Alphabet Inc. (*Google Antigravity, Gemini*)
 * Anthropic PBC (*Claude, Claude Code*)
 * Anysphere Inc. (*Cursor*)
@@ -343,7 +343,7 @@ All product names, trademarks, and registered trademarks are property of their r
 
 ## Reference Links & Documentation
 
-### MYSKILLS Repositories
+### agent-dev-skills Repositories
 * [Commit Architect Repository Guide](./commit-architect/README.md)
 * [Project Sync Repository Guide](./project-sync/README.md)
 * [Project Blueprint Repository Guide](./project-blueprint/README.md)

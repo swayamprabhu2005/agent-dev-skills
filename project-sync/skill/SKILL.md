@@ -106,9 +106,15 @@ Add an entry to `.gitignore` **only** if the item meets all of the following:
 3. It is **not** already ignored by an existing glob pattern.
 4. It is **not** an intentional project source, configuration, test, or documentation file.
 
-### Safety Rules:
-* **No Trash Can:** Never ignore a file simply because you don't know what it is. If a file is misplaced, clean it up or ask the user.
-* **Precise Patterns:** Prefer narrow, explicit rules (e.g., `.agent-local/` or `coverage/`) over dangerous broad wildcards (e.g., `*.json` or `tmp*`).
+### Safety Rules & Quarantine Protocol:
+* **Never Silently Delete Files:** Never silently delete files from the working tree merely because you believe they are temporary scratchpads, logs, or diagnostic dumps. Project Sync is not a destructive cleanup utility; destroying files risks deleting human work.
+* **Quarantine Protocol for Temporary Agent Artifacts:**
+  1. *Identify:* Recognize genuinely temporary agent-generated scratchpads (e.g. ad-hoc query scripts, debug dumps).
+  2. *Quarantine:* Move temporary artifacts into a dedicated project quarantine directory: `.agent/scratch/` (do not leave them in source roots).
+  3. *Ignore Quarantine Directory:* Ensure `.agent/scratch/` is ignored in `.gitignore`. This maintains repository hygiene with a single, clean pattern rather than polluting `.gitignore` with individual file names.
+  4. *Report:* List all quarantined files explicitly in the completion summary so the human user can inspect, retain, or delete them at their discretion.
+* **No Trash Can for Loose Files:** Never append loose file names directly to `.gitignore` to hide unknown or misplaced files.
+* **Precise Patterns:** Prefer narrow, explicit rules (e.g., `.agent/scratch/` or `coverage/`) over dangerous broad wildcards (e.g., `*.json` or `tmp*`).
 * **Tool-Managed Blocks:** If `.gitignore` contains comments indicating a section is managed by an external tool (e.g., `# created by create-react-app`), do not modify those lines.
 
 ---
@@ -131,6 +137,7 @@ Every completed iteration must conclude with a clear, factual completion summary
 * `No changes required`: File was evaluated and confirmed to be accurate as-is.
 * `Not applicable`: File does not apply to this project type.
 * `Unable to verify`: Ambiguity prevented automated confirmation without user clarification.
+* `Quarantined artifacts` (if applicable): Explicit list of files moved to `.agent/scratch/` for human review.
 
 ### Standard Template:
 ```text
@@ -144,6 +151,9 @@ Implemented:
 Project synchronization:
 - README.md — Updated authentication and setup sections with Google OAuth variables
 - .gitignore — No changes required (all generated tokens and caches already ignored)
+
+Quarantined artifacts:
+- .agent/scratch/scratch_auth_test.js (temporary debug script quarantined for review)
 
 Validation:
 - Tests: 14 passed (npm test)

@@ -58,4 +58,13 @@ Checklist:
 * [ ] Did I modify only the lines directly related to the new capability?
 * [ ] Did I avoid changing whitespace or formatting in unaffected sections?
 * [ ] Does the modified text accurately describe the new behavior?
+
+---
+
+## 5. Absolute Prohibition on Silent Deletion & The Quarantine Rule
+
+* **Never Silently Delete Files:** The agent must NEVER delete files from the repository working tree under the assumption that they are "unneeded" or "temporary". Deleting files without explicit human instruction risks irreversible loss of user investigation, test fixtures, or in-progress code.
+* **Quarantine Instead of Deletion:** When genuine agent-created temporary artifacts are identified (e.g., ad-hoc test scripts, data dumps), move them to `.agent/scratch/`.
+* **Clean Ignore Configuration:** Add `.agent/scratch/` to `.gitignore` so temporary files remain untracked without polluting `.gitignore` with individual file paths.
+* **Transparent Reporting:** Report all quarantined files in the completion summary so the developer can review or remove them at their discretion.
 * [ ] Are all surrounding user comments and badges preserved?

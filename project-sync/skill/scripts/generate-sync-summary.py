@@ -21,7 +21,7 @@ if hasattr(sys.stderr, "reconfigure"):
 
 VALID_STATUSES = ["Updated", "No changes required", "Not applicable", "Unable to verify"]
 
-def format_summary(implemented_items, readme_status, readme_note, gitignore_status, gitignore_note, validation_note=None):
+def format_summary(implemented_items, readme_status, readme_note, gitignore_status, gitignore_note, validation_note=None, quarantined_items=None):
     lines = ["Implementation complete.\n"]
 
     lines.append("Implemented:")
@@ -44,6 +44,12 @@ def format_summary(implemented_items, readme_status, readme_note, gitignore_stat
         lines.append(f"- .gitignore — {gitignore_status}")
     lines.append("")
 
+    if quarantined_items:
+        lines.append("Quarantined artifacts:")
+        for q in quarantined_items:
+            lines.append(f"- {q}")
+        lines.append("")
+
     if validation_note:
         lines.append("Validation:")
         for v in validation_note.split(";"):
@@ -61,6 +67,7 @@ def main():
     parser.add_argument("--readme-note", default="", help="Short description of README update or reason")
     parser.add_argument("--gitignore-status", choices=VALID_STATUSES, default="No changes required")
     parser.add_argument("--gitignore-note", default="", help="Short description of .gitignore update or reason")
+    parser.add_argument("--quarantined", action="append", help="Quarantined temporary artifact (can be repeated)")
     parser.add_argument("--validation", default="Build & tests passed", help="Semicolon-separated validation results")
     parser.add_argument("--json", action="store_true", help="Output as JSON object")
     args = parser.parse_args()
@@ -71,7 +78,8 @@ def main():
         readme_note=args.readme_note,
         gitignore_status=args.gitignore_status,
         gitignore_note=args.gitignore_note,
-        validation_note=args.validation
+        validation_note=args.validation,
+        quarantined_items=args.quarantined
     )
 
     if args.json:
@@ -79,6 +87,7 @@ def main():
             "implemented": args.implemented or [],
             "readme": {"status": args.readme_status, "note": args.readme_note},
             "gitignore": {"status": args.gitignore_status, "note": args.gitignore_note},
+            "quarantined": args.quarantined or [],
             "validation": args.validation,
             "formatted_summary": summary_text
         }

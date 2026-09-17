@@ -7,9 +7,12 @@ This integration connects the canonical Project Sync skill to Google Antigravity
 ## Verified Capabilities in Antigravity
 
 * **Skill Discovery:** Discovered via `.agents/skills/<skill-name>/SKILL.md` (project-local) or `~/.gemini/config/skills/<skill-name>/SKILL.md` (global).
-* **Progressive Disclosure:** Antigravity indexes `name` and `description` from YAML frontmatter on startup and loads the full instructions when triggered.
-* **Plugin Packaging:** Can be installed as a bundled plugin inside `.agents/plugins/project-sync/` or `~/.gemini/config/plugins/project-sync/` containing `plugin.json`, `hooks.json`, and `skills/project-sync/`.
-* **Ambient Guidelines:** Can be complemented with instructions in `AGENTS.md` or `GEMINI.md` to guarantee end-of-iteration execution.
+* **Progressive Disclosure:** Antigravity indexes `name` and `description` from YAML frontmatter on startup and loads the full instructions when triggered by task context.
+* **Plugin Packaging:** Can be installed as a bundled plugin inside `.agents/plugins/project-sync/` or `~/.gemini/config/plugins/project-sync/` containing `plugin.json` and `skills/project-sync/`.
+* **Ambient Guidelines:** Can be complemented with instructions in `AGENTS.md` or `GEMINI.md` to guide end-of-iteration synchronization.
+
+> [!NOTE]
+> **Invocation Mechanism:** Antigravity activates skills through **progressive disclosure** (when the agent recognizes a completed implementation iteration) or explicit prompt command. It does not use opaque background hooks to silently trigger skills.
 
 ---
 
@@ -37,16 +40,15 @@ mkdir -p ~/.gemini/config/skills/project-sync
 cp -r /path/to/project-sync/skill/* ~/.gemini/config/skills/project-sync/
 ```
 
-### Option 3: Plugin Bundle with Hooks
+### Option 3: Antigravity Plugin Bundle
 To package as an Antigravity plugin:
 1. Create plugin directory:
    ```bash
    mkdir -p ~/.gemini/config/plugins/project-sync/skills/project-sync
    ```
-2. Copy `plugin.json` and `hooks.json`:
+2. Copy `plugin.json`:
    ```bash
    cp integrations/antigravity/plugin.json ~/.gemini/config/plugins/project-sync/
-   cp integrations/antigravity/hooks.json ~/.gemini/config/plugins/project-sync/
    ```
 3. Copy skill files:
    ```bash

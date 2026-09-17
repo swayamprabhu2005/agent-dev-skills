@@ -74,20 +74,24 @@ Iteration Complete
 
 * **It is NOT a commit tool:** It does not stage or commit code into Git history. (That is the responsibility of its sibling skill, [Commit Architect](../commit-architect/)).
 * **It does NOT rewrite entire documents:** It makes the surgical minimum update to keep documentation accurate.
-* **It is NOT a trash can:** It never adds temporary agent scratch files to `.gitignore`. It cleans them up instead.
+* **It does NOT silently delete files:** It never silently deletes files from the repository working tree. Genuinely temporary agent artifacts are quarantined to `.agent/scratch/` and ignored via a single clean rule, then reported for human review.
+* **It is NOT a trash can:** It never adds loose individual file names to `.gitignore` to hide unknown files.
 * **It does NOT invent speculative features:** It documents only what is implemented and verified.
 
 ---
 
 ## Cross-Platform Compatibility Matrix
 
-| Platform | Core Methodology | Native Skill Discovery | Native Rules Support | Lifecycle Hooks | Status |
-| :--- | :---: | :---: | :---: | :---: | :--- |
-| **Google Antigravity** | ✅ Supported | `.agents/skills/` or `~/.gemini/config/` | `AGENTS.md` / `GEMINI.md` | Supported (`hooks.json`) | **Verified Support** |
-| **Claude Code** | ✅ Supported | `.claude/skills/` or `~/.claude/skills/` | `CLAUDE.md` | Via `CLAUDE.md` rules | **Verified Support** |
-| **Cursor** | ✅ Supported | `.cursor/skills/` or `~/.cursor/skills/` | `.cursor/rules/*.mdc` | Via `.mdc` rules | **Verified Support** |
-| **OpenAI Codex** | ✅ Supported | `.codex/skills/` or `.agents/skills/` | `AGENTS.md` | Via `AGENTS.md` instructions | **Verified Support** |
+| Platform | Core Methodology | Skill Discovery Path | Invocation Mode | Lifecycle Automation | Status |
+| :--- | :---: | :--- | :--- | :--- | :--- |
+| **Google Antigravity** | ✅ Supported | `.agents/skills/` or `~/.gemini/config/` | Model-Driven (Progressive Disclosure) / Direct Prompt | Manual / Workflow sequencing | **Verified** |
+| **Claude Code** | ✅ Supported | `.claude/skills/` or `~/.claude/skills/` | Model-Driven / Prompt | Manual / Workflow sequencing | **Verified** |
+| **Cursor** | ✅ Supported | `.cursor/skills/` or `.cursor/rules/*.mdc` | Model-Driven / Prompt | Ambient rule matching | **Verified** |
+| **OpenAI Codex** | ✅ Supported | `.codex/skills/` or `AGENTS.md` | Model-Driven / Direct `$command` | Manual / Prompt sequencing | **Verified** |
 | **Generic Agent Systems** | ✅ Supported | Runtime dependent (`.skills/`) | Platform dependent | Platform dependent | **Standards-Compatible** |
+
+> [!NOTE]
+> **Invocation vs. Automatic Hooks:** Project Sync triggers via **model-driven invocation** (when the agent completes a meaningful implementation milestone and recognizes the need to sync) or direct user prompt. It does not rely on unsupported automatic post-turn hooks.
 
 ---
 
@@ -107,10 +111,10 @@ project-sync/
 │   │
 │   ├── references/           # Progressive disclosure manuals
 │   │   ├── readme-synchronization.md   # Rules for surgical README edits
-│   │   ├── gitignore-synchronization.md# Rules for precise .gitignore entries
+│   │   ├── gitignore-synchronization.md# Rules for precise .gitignore entries & quarantine
 │   │   ├── impact-detection.md         # Heuristics for mapping diffs to docs
 │   │   ├── first-time-initialization.md# Bootstrapping fresh repositories
-│   │   ├── safety-rules.md             # Preserving manual user edits
+│   │   ├── safety-rules.md             # Preserving manual user edits & no silent deletion
 │   │   └── examples.md                 # Worked scenario index
 │   │
 │   └── scripts/              # Deterministic audit tools (Python 3)
@@ -119,7 +123,7 @@ project-sync/
 │       └── generate-sync-summary.py    # Formats standardized completion summary
 │
 ├── integrations/             # Thin platform adapters
-│   ├── antigravity/          # Google Antigravity plugin.json, hooks.json & guide
+│   ├── antigravity/          # Google Antigravity plugin.json & guide
 │   ├── claude-code/          # Claude Code setup guide
 │   ├── cursor/               # Cursor setup & project-sync.mdc rule
 │   ├── codex/                # OpenAI Codex setup & AGENTS.md instructions

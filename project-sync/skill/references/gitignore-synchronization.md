@@ -16,9 +16,14 @@ The purpose of `.gitignore` is to declare which untracked files should **never**
 
 ## 2. The Strict Non-Negotiable Rules
 
-### Rule 1: Never Use `.gitignore` as a Trash Can
-* ❌ An agent creates a temporary test file `test_scratch_123.py` or downloads a data dump in the root folder, doesn't know what to do with it, and appends `test_scratch_123.py` to `.gitignore`.
-* **Correction:** If a file is temporary scratch created by the agent, **delete it** before concluding the iteration! `.gitignore` is for persistent, predictable project artifacts, not temporary agent trash.
+### Rule 1: Never Use `.gitignore` as a Trash Can & Never Silently Delete
+* ❌ **The Trash-Can Anti-Pattern:** An agent creates a temporary test script `test_scratch_123.py` or dumps raw data `dump.json` in the root folder, and appends individual loose filenames (`test_scratch_123.py`, `dump.json`) to `.gitignore`. This pollutes version control configuration with ad-hoc filenames.
+* ❌ **The Silent Deletion Danger:** The agent silently deletes untracked scratch files without user knowledge, risking destroying genuine developer investigation or experimental code.
+* ✅ **The Safe Quarantine Protocol:**
+  1. Move genuine agent temporary scratchpads to a dedicated project quarantine directory: `.agent/scratch/`.
+  2. Ensure the quarantine directory pattern (`.agent/scratch/`) is added to `.gitignore` (a single, clean rule).
+  3. Report quarantined files in the completion summary so the human developer can inspect, retain, or delete them safely.
+  4. Never use `.gitignore` to hide or ignore genuine source, test, or config files simply because they are unfinished.
 
 ### Rule 2: Always Check Existing Coverage First
 Before adding any new pattern, run:

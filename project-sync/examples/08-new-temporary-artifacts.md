@@ -1,6 +1,6 @@
-# Example 08: New Temporary Artifacts (Cleaning Up vs. Ignoring)
+# Example 08: New Temporary Artifacts (Quarantine vs. Silent Deletion)
 
-This example demonstrates the critical discipline of deleting temporary agent scratch files rather than misusing `.gitignore` as a trash can.
+This example demonstrates the safe quarantine protocol for temporary agent scratch files: never silently delete files, and never misuse `.gitignore` as a trash can for loose filenames.
 
 ---
 
@@ -16,7 +16,7 @@ The agent verified the query, integrated the fix into `src/reports/orders.py`, a
 * No CLI flags, setup steps, or configurations changed.
 * **Decision:** No changes required for `README.md`.
 
-## 3. Determination of Ignore-Rule Impact
+## 3. Determination of Ignore-Rule & Quarantine Impact
 * Inspecting `git status` shows:
   ```text
   ?? query_dump.json
@@ -25,14 +25,20 @@ The agent verified the query, integrated the fix into `src/reports/orders.py`, a
 * **Critical Evaluation:**
   * Are these files persistent build artifacts created by the application? **NO.**
   * Are they machine-specific environment configurations? **NO.**
-  * Are they temporary scratchpad files created by the agent for testing? **YES.**
-* **Anti-Pattern:** Adding `scratch_test_query.py` and `query_dump.json` to `.gitignore`.
-* **Correct Protocol:** Delete the temporary scratch files! Do NOT pollute `.gitignore`.
+  * Are they temporary scratchpad files created by the agent during debugging? **YES.**
+* **Anti-Pattern 1 (Trash Can):** Adding `scratch_test_query.py` and `query_dump.json` to `.gitignore`.
+* **Anti-Pattern 2 (Silent Deletion):** Silently running `rm` on the files without user knowledge, destroying investigation artifacts.
+* **Correct Protocol:**
+  1. Quarantine temporary artifacts by moving them to `.agent/scratch/`:
+     - `.agent/scratch/scratch_test_query.py`
+     - `.agent/scratch/query_dump.json`
+  2. Ensure `.agent/scratch/` is in `.gitignore`.
+  3. Report quarantined files in the completion summary for human review.
 
 ## 4. Resulting Modifications
-* Deleted `scratch_test_query.py` and `query_dump.json` from the filesystem.
+* Moved temporary debug files to `.agent/scratch/`.
 * `README.md`: Unchanged.
-* `.gitignore`: Unchanged.
+* `.gitignore`: Added `.agent/scratch/` rule.
 
 ## 5. Completion Summary
 ```text
@@ -40,14 +46,18 @@ Implementation complete.
 
 Implemented:
 - Optimized SQL join in OrderReportService to eliminate N+1 query bottleneck
-- Removed temporary local scratch query scripts and data dumps
 
 Project synchronization:
 - README.md — No changes required: Internal optimization with no user-facing documentation impact
-- .gitignore — No changes required: Temporary debug files were cleaned up rather than ignored
+- .gitignore — Updated: Added .agent/scratch/ rule for temporary agent scratchpad quarantine
+
+Quarantined artifacts:
+- .agent/scratch/scratch_test_query.py (temporary SQL test script quarantined for review)
+- .agent/scratch/query_dump.json (diagnostic data dump quarantined for review)
 
 Validation:
 - Tests: 19 passed (pytest tests/test_order_reports.py)
 
 Iteration complete.
 ```
+

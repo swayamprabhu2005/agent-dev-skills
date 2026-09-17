@@ -32,7 +32,8 @@ COMMON_IGNORE_SUGGESTIONS = [
     (r"(^|[/\\])\.venv($|[/\\])", ".venv/", "Python virtual environment"),
     (r"\.DS_Store$", ".DS_Store", "macOS desktop metadata"),
     (r"Thumbs\.db$", "Thumbs.db", "Windows thumbnail cache"),
-    (r"\.env(\.local)?$", ".env", "Local environment secrets file")
+    (r"\.env(\.local)?$", ".env", "Local environment secrets file"),
+    (r"(^|[/\\])\.agent[/\\]scratch($|[/\\])", ".agent/scratch/", "Agent temporary scratch quarantine directory")
 ]
 
 def run_git(args, cwd=None):

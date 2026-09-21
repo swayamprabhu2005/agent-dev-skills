@@ -11,7 +11,7 @@
 
 ## Overview
 
-**MYSKILLS** is an open personal collection of specialized **Agent Skills** designed to teach AI pair programmers and autonomous coding agents professional software engineering discipline.
+**agent-dev-skills** is an open personal collection of specialized **Agent Skills** designed to teach AI pair programmers and autonomous coding agents professional software engineering discipline.
 
 Typical AI coding agents suffer from predictable behavioral pathologies:
 * **Premature implementation:** Rushing into code generation on ambiguous instructions without architecture or user approval.

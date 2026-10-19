@@ -14,6 +14,7 @@
 **agent-dev-skills** is an open personal collection of specialized **Agent Skills** designed to teach AI pair programmers and autonomous coding agents professional software engineering discipline.
 
 Typical AI coding agents suffer from predictable behavioral pathologies:
+* **Vague prompt engineering:** Formulating ambiguous requests without negative constraints, proper context grounding, or testable verification criteria.
 * **Premature implementation:** Rushing into code generation on ambiguous instructions without architecture or user approval.
 * **Documentation rot:** Leaving human-facing `README.md` files and repository ignore configurations (`.gitignore`) out of date after implementing features.
 * **Chaotic version control:** Creating giant, unreviewable monolithic commits or noisy, single-line micro-commits with robotic conventional prefixes.
@@ -26,6 +27,7 @@ The skills in this collection solve these challenges by providing modular, vendo
 
 | Skill | Primary Responsibility | Key Output | Status | Repository |
 | :--- | :--- | :--- | :---: | :--- |
+| **[Context Matrix](./context-matrix/)** | Context-aware prompt design, framework selection (8 frameworks), prompt construction, and quality evaluation | Tailored, testable prompts, framework routing rationale, qualitative readiness score | **Production** | [`context-matrix/`](./context-matrix/README.md) |
 | **[Project Blueprint](./project-blueprint/)** | Pre-implementation planning, architectural clarification, and human approval gating | 5 core specs (`PRD`, `TRD`, `UI_UX`, `BACKEND_SCHEMA`, `APP_FLOW`) + `.blueprint/state.yaml` | **Production** | [`project-blueprint/`](./project-blueprint/README.md) |
 | **[Project Sync](./project-sync/)** | Synchronizing `README.md` and `.gitignore` after meaningful implementation iterations | Reconciled documentation, quarantine of temporary artifacts, factual completion summary | **Production** | [`project-sync/`](./project-sync/README.md) |
 | **[Commit Architect](./commit-architect/)** | Planning, slicing, dependency-ordering, diff-reviewing, and authoring natural Git commits | Cohesive atomic Git commits, clean history, natural programmer commit messages | **Production** | [`commit-architect/`](./commit-architect/README.md) |
@@ -34,22 +36,25 @@ The skills in this collection solve these challenges by providing modular, vendo
 
 ## How the Skills Relate
 
-The three skills are **completely independent and decoupled**. There are no runtime dependencies, hardcoded links, or required couplings between them. You can install and use any single skill on its own without installing the others.
+The four skills are **completely independent and decoupled**. There are no runtime dependencies, hardcoded links, or required couplings between them. You can install and use any single skill on its own without installing the others.
 
 When used together across a larger project lifecycle, they form a natural, closed-loop development pipeline:
 
 ```mermaid
 flowchart LR
-    A["📐 Project Blueprint\n(Planning & Approval Gate)\nPRD • TRD • UI/UX • Schema • Flow"] -->|"Approved Specifications\n& Implementation Roadmap"| Dev["⚙️ Implementation Phase\n(Agent Code Execution)"]
+    CM["🎯 Context Matrix\n(Prompt & Task Architecture)\n8 Frameworks • Selection Engine • Quality Rubric"] -->|"Grounded Task Specification\n& Context-Aware Prompt"| A["📐 Project Blueprint\n(Planning & Approval Gate)\nPRD • TRD • UI/UX • Schema • Flow"]
+    A -->|"Approved Specifications\n& Implementation Roadmap"| Dev["⚙️ Implementation Phase\n(Agent Code Execution)"]
     Dev -->|"Completed Milestone\n& Verified Codebase"| B["🔄 Project Sync\n(Documentation Reconciliation)\nDocs • README • Gitignore"]
     B -->|"Synchronized Files\n& Clean Working Tree"| C["🏗️ Commit Architect\n(History Architecture & Slicing)\nAtomic Commits • Logical History"]
 
+    style CM fill:#fce4ec,stroke:#c2185b,stroke-width:2px
     style A fill:#e1f5fe,stroke:#0288d1,stroke-width:2px
     style Dev fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
     style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
 ```
 
+* **Step 0 (Prompt & Framework Architecture):** **Context Matrix** inspects repository context, selects the optimal prompt framework from 8 modules (CLARITY, SOCRATES, ANTICIPATE, PARTNER, TRUST, RIPPLE, CATCH, MAGIC), bounds negative constraints, and constructs a testable, high-fidelity prompt.
 * **Step 1 (Before Implementation):** **Project Blueprint** conducts targeted clarification, drafts synchronized architectural specifications with Mermaid diagrams, audits cross-document consistency, and enforces human sign-off before coding starts.
 * **Step 2 (During/After Implementation):** The agent writes and tests the software.
 * **Step 3 (Post-Implementation Reconciliation):** **Project Sync** inspects changed files, updates relevant `README.md` sections, updates `.gitignore`, quarantines temporary scratchpads into `.agent/scratch/`, and outputs a factual completion report.
@@ -96,86 +101,221 @@ flowchart LR
 * **Verification Scripting:** Pure Python stdlib tools: `inspect-working-tree.py`, `validate-staged-diff.py`, `verify-commit.py`.
 * **Deep Dive:** Read the [Commit Architect Guide](./commit-architect/README.md).
 
+### 4. Context Matrix 🎯
+
+* **Core Purpose:** Teaches AI coding agents disciplined prompt engineering, framework selection, and prompt-quality evaluation across eight specialized methodologies.
+* **Key Mechanisms:**
+  * **Framework Selection Engine:** Dynamically routes tasks to the optimal framework: `CLARITY` (functional specs/coding), `SOCRATES` (architecture/trade-offs), `ANTICIPATE` (tutorials/pedagogy), `PARTNER` (research/benchmarks), `TRUST` (tailored advisory), `RIPPLE` (code reviews/debugging/audits), `CATCH` (concise communications), or `MAGIC` (creative narrative).
+  * **Multi-Framework Orchestration:** Combines complementary frameworks for complex workflows without boilerplate redundancy (e.g. `SOCRATES + RIPPLE`, `CLARITY + RIPPLE`).
+  * **Project-Aware Context Grounding:** Inspects active repository dependencies, configurations, and existing specifications (`.blueprint/state.yaml`) to inject verified facts and enforce negative constraints.
+  * **Prompt Quality Rubric:** Evaluates prompts against a 10-point Quality Checklist, returning actionable qualitative readiness states (`Ready to Use`, `Ready with Assumptions`, or `Needs Clarification`).
+  * **9 Operating Modes:** Supports `/context-matrix [task]`, explicit framework invocation, prompt generation (`/context-matrix prompt ...`), prompt improvement (`/context-matrix improve ...`), evaluation, explanation, and combinations.
+* **Verification Scripting:** Pure Python stdlib tools: `select-framework.py`, `evaluate-prompt.py`, `test-context-matrix.py`.
+* **Deep Dive:** Read the [Context Matrix Guide](./context-matrix/README.md).
+
 ---
 
 ## Independent Usage & Installation
 
-Every skill can be installed independently at the **project level** (for a specific repository) or at the **global level** (for all projects on your workstation).
-
-### Project-Level vs. Global Installation Comparison
-
-| Installation Mode | Where Files Reside | Scope | Best For |
-| :--- | :--- | :--- | :--- |
-| **Project-Level** | Target repository (`.agents/skills/`, `.claude/skills/`, `.cursor/skills/`) | Single codebase | Team sharing via Git; repo-specific workflows |
-| **Global / Machine** | User config (`~/.gemini/config/skills/`, `~/.claude/skills/`, `~/.cursor/skills/`) | All sessions | Personal developer toolchain across all workspaces |
+Every skill in this collection is self-contained and adheres to the open [Agent Skills Specification](https://agentskills.io). You can install a single skill or all four skills together, either at the **project level** (for a specific codebase) or at the **global level** (workstation-wide across all projects).
 
 ---
 
-### Installing an Individual Skill
+### Direct Slash Command Invocation
 
-#### Option A: Install ONLY Commit Architect
+When installed in your project's `.agents/skills/` directory (or globally), Google Antigravity automatically registers each skill directory as a native slash command:
+
+```text
+/context-matrix [task]       # Context-aware prompt design, 8 frameworks, prompt evaluation
+/project-blueprint [feature] # Pre-implementation planning, 5 specifications, human approval gate
+/project-sync [iteration]    # Reconciles README.md and .gitignore, quarantines scratchpads
+/commit-architect [work]     # Plans, validates staged diffs, and creates atomic Git commits
+```
+
+Arguments following the command are passed directly to the skill instructions. For example:
+* `/context-matrix socrates Evaluate database partitioning for 10TB scale`
+* `/context-matrix prompt Build an idempotent payment webhook in Go`
+* `/project-blueprint Design an email invitation system for team administrators`
+* `/project-sync Reconcile documentation after implementing Redis rate limiting`
+* `/commit-architect Create atomic commits for the authentication overhaul`
+
+---
+
+### Method 1: Direct GitHub ZIP Download & Unzip (No Git Clone Required)
+
+If `agent-dev-skills` is hosted on GitHub, you can download and use any skill in your active project **without cloning the repository, without touching submodules, and without risking Git conflicts**:
+
+1. **Download the Repository ZIP from GitHub:**
+   * Go to the GitHub repository page (`https://github.com/swayamprabhu2005/agent-dev-skills`).
+   * Click **Code** → **Download ZIP**, and extract it locally.
+2. **Create the `.agents/skills` Folder in Your Working Project:**
+   ```bash
+   # In your working project root:
+   mkdir -p .agents/skills
+   ```
+3. **Copy / Unzip the Desired Skill's `skill/` Subfolder:**
+   * Each skill folder contains a canonical `skill/` subfolder (which holds `SKILL.md`, `references/`, and `scripts/`).
+   * Copy or unzip that `skill/` directory into `.agents/skills/<skill-name>/`.
+   * **Verification Rule:** Ensure `SKILL.md` resides directly at `.agents/skills/<skill-name>/SKILL.md`.
+
+#### Windows Example (PowerShell):
+```powershell
+# In your target working project:
+New-Item -ItemType Directory -Force -Path .agents\skills\commit-architect
+
+# Extract or copy the canonical skill/ folder files:
+Copy-Item -Recurse -Force C:\Downloads\agent-dev-skills-main\commit-architect\skill\* .agents\skills\commit-architect\
+```
+
+#### macOS / Linux Example (Bash):
 ```bash
-# In your target repository:
+# In your target working project:
+mkdir -p .agents/skills/commit-architect
+cp -r ~/Downloads/agent-dev-skills-main/commit-architect/skill/* .agents/skills/commit-architect/
+```
+
+Once unzipped, restart or open your AI assistant session in your project. The skill and its `/slash-command` are immediately discovered.
+
+---
+
+### Method 2: Scripted Copy from Local Clone (For Developers)
+
+If you have cloned `agent-dev-skills` locally, use these copy commands to install skills into any target project:
+
+#### Option A: Install ONLY Context Matrix
+```bash
+# In your target repository root:
+mkdir -p .agents/skills/context-matrix
+cp -r /path/to/agent-dev-skills/context-matrix/skill/* .agents/skills/context-matrix/
+
+# Or for Claude Code:
+mkdir -p .claude/skills/context-matrix
+cp -r /path/to/agent-dev-skills/context-matrix/skill/* .claude/skills/context-matrix/
+
+# Or for Cursor:
+mkdir -p .cursor/skills/context-matrix .cursor/rules
+cp -r /path/to/agent-dev-skills/context-matrix/skill/* .cursor/skills/context-matrix/
+cp /path/to/agent-dev-skills/context-matrix/integrations/cursor/context-matrix.mdc .cursor/rules/
+```
+
+#### Option B: Install ONLY Project Blueprint
+```bash
+# In your target repository root:
+mkdir -p .agents/skills/project-blueprint
+cp -r /path/to/agent-dev-skills/project-blueprint/skill/* .agents/skills/project-blueprint/
+
+# Or for Claude Code:
+mkdir -p .claude/skills/project-blueprint
+cp -r /path/to/agent-dev-skills/project-blueprint/skill/* .claude/skills/project-blueprint/
+
+# Or for Cursor:
+mkdir -p .cursor/skills/project-blueprint .cursor/rules
+cp -r /path/to/agent-dev-skills/project-blueprint/skill/* .cursor/skills/project-blueprint/
+cp /path/to/agent-dev-skills/project-blueprint/integrations/cursor/project-blueprint.mdc .cursor/rules/
+```
+
+#### Option C: Install ONLY Project Sync
+```bash
+# In your target repository root:
+mkdir -p .agents/skills/project-sync
+cp -r /path/to/agent-dev-skills/project-sync/skill/* .agents/skills/project-sync/
+
+# Or for Claude Code:
+mkdir -p .claude/skills/project-sync
+cp -r /path/to/agent-dev-skills/project-sync/skill/* .claude/skills/project-sync/
+
+# Or for Cursor:
+mkdir -p .cursor/skills/project-sync .cursor/rules
+cp -r /path/to/agent-dev-skills/project-sync/skill/* .cursor/skills/project-sync/
+cp /path/to/agent-dev-skills/project-sync/integrations/cursor/project-sync.mdc .cursor/rules/
+```
+
+#### Option D: Install ONLY Commit Architect
+```bash
+# In your target repository root:
+mkdir -p .agents/skills/commit-architect
+cp -r /path/to/agent-dev-skills/commit-architect/skill/* .agents/skills/commit-architect/
+
+# Or for Claude Code:
+mkdir -p .claude/skills/commit-architect
+cp -r /path/to/agent-dev-skills/commit-architect/skill/* .claude/skills/commit-architect/
+
+# Or for Cursor:
+mkdir -p .cursor/skills/commit-architect .cursor/rules
+cp -r /path/to/agent-dev-skills/commit-architect/skill/* .cursor/skills/commit-architect/
+cp /path/to/agent-dev-skills/commit-architect/integrations/cursor/commit-architect.mdc .cursor/rules/
+```
+
+#### Option E: Install ALL Four Skills in One Step
+```bash
+# In your target repository root (for Google Antigravity):
 mkdir -p .agents/skills
-cp -r /path/to/MYSKILLS/commit-architect/skill .agents/skills/commit-architect
+for skill in context-matrix project-blueprint project-sync commit-architect; do
+  mkdir -p .agents/skills/$skill
+  cp -r /path/to/agent-dev-skills/$skill/skill/* .agents/skills/$skill/
+done
 
 # Or for Claude Code:
 mkdir -p .claude/skills
-cp -r /path/to/MYSKILLS/commit-architect/skill .claude/skills/commit-architect
+for skill in context-matrix project-blueprint project-sync commit-architect; do
+  mkdir -p .claude/skills/$skill
+  cp -r /path/to/agent-dev-skills/$skill/skill/* .claude/skills/$skill/
+done
 
 # Or for Cursor:
 mkdir -p .cursor/skills .cursor/rules
-cp -r /path/to/MYSKILLS/commit-architect/skill .cursor/skills/commit-architect
-cp /path/to/MYSKILLS/commit-architect/integrations/cursor/commit-architect.mdc .cursor/rules/
+for skill in context-matrix project-blueprint project-sync commit-architect; do
+  mkdir -p .cursor/skills/$skill
+  cp -r /path/to/agent-dev-skills/$skill/skill/* .cursor/skills/$skill/
+done
+cp /path/to/agent-dev-skills/*/integrations/cursor/*.mdc .cursor/rules/
 ```
-* **To Update:** Re-copy or pull updates from `commit-architect/skill`.
-* **To Remove:** Delete the `.agents/skills/commit-architect/` directory.
 
-#### Option B: Install ONLY Project Sync
-```bash
-# In your target repository:
-mkdir -p .agents/skills
-cp -r /path/to/MYSKILLS/project-sync/skill .agents/skills/project-sync
+---
 
-# Or for Claude Code:
-mkdir -p .claude/skills
-cp -r /path/to/MYSKILLS/project-sync/skill .claude/skills/project-sync
+### Global / Workstation Installation (Available Across All Projects)
 
-# Or for Cursor:
-mkdir -p .cursor/skills .cursor/rules
-cp -r /path/to/MYSKILLS/project-sync/skill .cursor/skills/project-sync
-cp /path/to/MYSKILLS/project-sync/integrations/cursor/project-sync.mdc .cursor/rules/
-```
-* **To Update:** Re-copy or pull updates from `project-sync/skill`.
-* **To Remove:** Delete the `.agents/skills/project-sync/` directory.
+If you prefer having all four skills available across **every workspace on your machine** without copying files into every repository:
 
-#### Option C: Install ONLY Project Blueprint
-```bash
-# In your target repository:
-mkdir -p .agents/skills
-cp -r /path/to/MYSKILLS/project-blueprint/skill .agents/skills/project-blueprint
+* **Google Antigravity:**
+  * **Windows:** `%USERPROFILE%\.gemini\config\skills\<skill-name>\`
+  * **Linux / macOS:** `~/.gemini/config/skills/<skill-name>/`
+  ```bash
+  mkdir -p ~/.gemini/config/skills
+  for skill in context-matrix project-blueprint project-sync commit-architect; do
+    mkdir -p ~/.gemini/config/skills/$skill
+    cp -r /path/to/agent-dev-skills/$skill/skill/* ~/.gemini/config/skills/$skill/
+  done
+  ```
 
-# Or for Claude Code:
-mkdir -p .claude/skills
-cp -r /path/to/MYSKILLS/project-blueprint/skill .claude/skills/project-blueprint
+* **Claude Code:**
+  ```bash
+  mkdir -p ~/.claude/skills
+  for skill in context-matrix project-blueprint project-sync commit-architect; do
+    mkdir -p ~/.claude/skills/$skill
+    cp -r /path/to/agent-dev-skills/$skill/skill/* ~/.claude/skills/$skill/
+  done
+  ```
 
-# Or for Cursor:
-mkdir -p .cursor/skills .cursor/rules
-cp -r /path/to/MYSKILLS/project-blueprint/skill .cursor/skills/project-blueprint
-cp /path/to/MYSKILLS/project-blueprint/integrations/cursor/project-blueprint.mdc .cursor/rules/
-```
-* **To Update:** Re-copy or pull updates from `project-blueprint/skill`.
-* **To Remove:** Delete the `.agents/skills/project-blueprint/` directory.
+* **Cursor:**
+  ```bash
+  mkdir -p ~/.cursor/skills
+  for skill in context-matrix project-blueprint project-sync commit-architect; do
+    mkdir -p ~/.cursor/skills/$skill
+    cp -r /path/to/agent-dev-skills/$skill/skill/* ~/.cursor/skills/$skill/
+  done
+  ```
+
 
 ---
 
 ## Platform Compatibility Matrix
 
-All three skills adhere to the open [Agent Skills Specification](https://agentskills.io). Support across major platforms has been audited and verified against official upstream conventions:
+All four skills adhere to the open [Agent Skills Specification](https://agentskills.io). Support across major platforms has been audited and verified against official upstream conventions:
 
 | Platform | Skill Discovery Convention | Invocation Mode | Compatibility Level | Notes |
 | :--- | :--- | :--- | :---: | :--- |
-| **Google Antigravity** | `.agents/skills/<name>/SKILL.md`<br>`~/.gemini/config/skills/<name>/` | Model-Driven (Progressive Disclosure) / Direct Prompt | **Verified** | Full support for YAML metadata indexing, on-demand reference loading, and `ask_question` tool in Project Blueprint. |
+| **Google Antigravity** | `.agents/skills/<name>/SKILL.md`<br>`~/.gemini/config/skills/<name>/` | Model-Driven (Progressive Disclosure) / Direct Prompt / Slash Commands (`/context-matrix`, etc.) | **Verified** | Full support for YAML metadata indexing, on-demand reference loading, and slash commands. |
 | **Claude Code** | `.claude/skills/<name>/SKILL.md`<br>`~/.claude/skills/<name>/` | Model-Driven / Prompt | **Verified** | Native support for standard Agent Skills format. Optional hint in `CLAUDE.md`. |
 | **Cursor** | `.cursor/skills/<name>/SKILL.md`<br>`.cursor/rules/*.mdc` | Model-Driven / Composer Chat | **Verified** | Full support for `SKILL.md` coupled with lightweight `.mdc` rules for ambient enforcement. |
 | **OpenAI Codex** | `.codex/skills/<name>/SKILL.md`<br>`AGENTS.md` | Model-Driven / Direct `$command` | **Verified** | Standard `SKILL.md` loading supported, with persistent instructions in `AGENTS.md`. |
@@ -226,18 +366,41 @@ All three skills adhere to the open [Agent Skills Specification](https://agentsk
 4. **Repeats for Unit 2:** Implements UI integration, tests, reviews diff, and commits with:
    `Handle signup form submission and network error display`
 
+### Example 4: Context Matrix in Action
+**User Prompt:**
+> *"/context-matrix Evaluate architecture trade-offs between monolith and microservices under 8GB memory limits."*
+
+**Agent Flow:**
+1. **Routes Framework:** Automatic selection engine selects `SOCRATES` (System Architecture & Trade-Offs).
+2. **Inspects Grounded Context:** Gathers memory constraints, team size parameters, and operational boundaries.
+3. **Enforces Boundaries:** Keeps planning separate from code generation; systematically compares bounded options.
+4. **Delivers Tailored Plan:** Outputs trade-off matrix, failure modes, SLA evaluation criteria, and phased roadmap.
+
 ---
 
 ## Repository Structure
 
-The actual structure of the `MYSKILLS` collection is organized as three standalone sibling repositories:
+The actual structure of the `agent-dev-skills` collection is organized as four standalone sibling skills:
 
 ```text
-MYSKILLS/
+agent-dev-skills/
 │
 ├── README.md                      # Central collection landing page & catalog (this document)
 │
-├── commit-architect/              # Independent Skill Repository: Commit Architecture
+├── context-matrix/                # Independent Skill: Prompt Architecture & Framework Engine
+│   ├── README.md                  # Comprehensive skill documentation
+│   ├── LICENSE                    # MIT License
+│   ├── AUTHORS                    # Authorship attribution
+│   ├── NOTICE                     # Legal disclaimers & trademark notices
+│   ├── skill/                     # Canonical Open Agent Skill
+│   │   ├── SKILL.md               # Main skill manifest with YAML frontmatter
+│   │   ├── references/            # 8 framework reference manuals & quality checklists
+│   │   └── scripts/               # Pure Python stdlib verification tools
+│   ├── integrations/              # Multi-platform adapters (Antigravity, Claude, Cursor, Codex)
+│   ├── examples/                  # 10 real-world case study walkthroughs
+│   └── docs/                      # Architecture, portability, and contribution guides
+│
+├── commit-architect/              # Independent Skill: Commit Architecture
 │   ├── README.md                  # Comprehensive skill documentation
 │   ├── LICENSE                    # MIT License
 │   ├── AUTHORS                    # Authorship attribution
@@ -250,7 +413,7 @@ MYSKILLS/
 │   ├── examples/                  # 12 real-world case study walkthroughs
 │   └── docs/                      # Architecture, portability, and contribution guides
 │
-├── project-sync/                  # Independent Skill Repository: Project Synchronization
+├── project-sync/                  # Independent Skill: Project Synchronization
 │   ├── README.md                  # Comprehensive skill documentation
 │   ├── LICENSE                    # MIT License
 │   ├── AUTHORS                    # Authorship attribution
@@ -263,7 +426,7 @@ MYSKILLS/
 │   ├── examples/                  # 17 real-world case study walkthroughs
 │   └── docs/                      # Architecture, portability, and contribution guides
 │
-└── project-blueprint/             # Independent Skill Repository: Pre-Implementation Planning
+└── project-blueprint/             # Independent Skill: Pre-Implementation Planning
     ├── README.md                  # Comprehensive skill documentation
     ├── LICENSE                    # MIT License
     ├── AUTHORS                    # Authorship attribution
@@ -288,6 +451,7 @@ Each skill is developed and maintained independently within its own directory:
 4. **Dogfooding:** Contributions should follow the Commit Architect standard for atomic commit slicing and Project Sync standards for documentation updates.
 
 For specific contribution guidelines, see:
+* [Context Matrix Contributing Guide](./context-matrix/docs/contributing.md)
 * [Commit Architect Contributing Guide](./commit-architect/docs/contributing.md)
 * [Project Sync Contributing Guide](./project-sync/docs/contributing.md)
 * [Project Blueprint Contributing Guide](./project-blueprint/docs/contributing.md)
@@ -319,6 +483,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 ```
 
 See individual repository license files:
+* [Context Matrix License](./context-matrix/LICENSE)
 * [Commit Architect License](./commit-architect/LICENSE)
 * [Project Sync License](./project-sync/LICENSE)
 * [Project Blueprint License](./project-blueprint/LICENSE)
@@ -344,6 +509,7 @@ All product names, trademarks, and registered trademarks are property of their r
 ## Reference Links & Documentation
 
 ### agent-dev-skills Repositories
+* [Context Matrix Repository Guide](./context-matrix/README.md)
 * [Commit Architect Repository Guide](./commit-architect/README.md)
 * [Project Sync Repository Guide](./project-sync/README.md)
 * [Project Blueprint Repository Guide](./project-blueprint/README.md)

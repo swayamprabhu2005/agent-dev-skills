@@ -1,0 +1,23 @@
+---
+description: Context Matrix for intelligent prompt engineering across 8 frameworks
+globs: *
+alwaysApply: false
+---
+
+# Context Matrix Prompt Engineering Rule for Cursor
+
+When crafting complex prompts, technical specifications, architecture plans, or prompt reviews:
+
+1. **Route to the optimal framework:**
+   - **CLARITY:** For software implementation, function signatures, and coding.
+   - **SOCRATES:** For architecture designs, hardware limits, and trade-off analysis.
+   - **ANTICIPATE:** For tutorials, developer onboarding, and educational walkthroughs.
+   - **PARTNER:** For research, competitive library evaluations, and empirical benchmarks.
+   - **TRUST:** For tailored decision support, consulting advice, and recommendations.
+   - **RIPPLE:** For code reviews, debugging stack traces, and dataset audits.
+   - **CATCH:** For concise communications, release notes, and shell scripts.
+   - **MAGIC:** For creative storytelling, comics, and marketing concepts.
+2. **Ground in repository facts:** Inspect relevant project configs and source files before prompting.
+3. **Audit against the 10-point Quality Checklist:** Ensure goal clarity, negative constraints, testability, and non-hyperbolic signal.
+
+For the full specification, reference `.cursor/skills/context-matrix/SKILL.md`.

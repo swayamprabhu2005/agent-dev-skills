@@ -1,0 +1,7 @@
+{
+  "name": "context-matrix",
+  "description": "Context Matrix orchestrates 8 prompt-engineering frameworks for software engineering and prompt design.",
+  "version": "0.1.0",
+  "author": "SWAYAM KIRAN PRABHU",
+  "license": "MIT"
+}

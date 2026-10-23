@@ -1,0 +1,15 @@
+---
+description: Chroma-Craft Color Palette and Web Frontend Styling Rule
+globs: "**/*.{css,scss,tsx,jsx,vue,svelte,html,tailwind.config.js,tailwind.config.ts}"
+---
+
+# Chroma-Craft Cursor Rule
+
+When writing or editing CSS, Tailwind CSS, or frontend components:
+- Always use the 46-color canonical palette in `chroma-craft/skill/references/color-roster.md`.
+- Adhere to the strict blue rule: only use `Ice Blue`, `Baby Blue`, `Ocean Blue`, `Midnight Blue`, `Electric Blue`, `Arctic Blue`, and `Steel Blue`.
+- Apply domain archetypes:
+  - E-Commerce: Pristine Snow White (#FBFBFD) canvas, Amber Gold (#F59E0B) or Forest Green (#228B22) CTA. No noisy gradients behind product photos.
+  - Corporate: Midnight Blue (#191970) or Steel Blue (#4682B4) with Snow White. Sober, zero shiny jigmig.
+  - Hackathons: Charcoal Onyx (#121214) dark canvas, Electric Blue (#0066FF) + Cyan (#00E5FF) neon gradients.
+- Enforce WCAG 2.1 AA contrast: body text >= 4.5:1, large text / UI borders >= 3.0:1.

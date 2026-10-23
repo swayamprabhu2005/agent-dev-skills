@@ -31,24 +31,27 @@ The skills in this collection solve these challenges by providing modular, vendo
 | **[Project Blueprint](./project-blueprint/)** | Pre-implementation planning, architectural clarification, and human approval gating | 5 core specs (`PRD`, `TRD`, `UI_UX`, `BACKEND_SCHEMA`, `APP_FLOW`) + `.blueprint/state.yaml` | **Production** | [`project-blueprint/`](./project-blueprint/README.md) |
 | **[Project Sync](./project-sync/)** | Synchronizing `README.md` and `.gitignore` after meaningful implementation iterations | Reconciled documentation, quarantine of temporary artifacts, factual completion summary | **Production** | [`project-sync/`](./project-sync/README.md) |
 | **[Commit Architect](./commit-architect/)** | Planning, slicing, dependency-ordering, diff-reviewing, and authoring natural Git commits | Cohesive atomic Git commits, clean history, natural programmer commit messages | **Production** | [`commit-architect/`](./commit-architect/README.md) |
+| **[Chroma-Craft](./chroma-craft/)** | Web frontend color schemes, accessible 2/3/4-color design tokens, CSS linear gradients, and topic-specific styling rules | Domain-calibrated CSS tokens (`:root` / dark mode), WCAG 2.1 AA/AAA contrast audit, and linear gradient formulas | **Production** | [`chroma-craft/`](./chroma-craft/README.md) |
 
 ---
 
 ## How the Skills Relate
 
-The four skills are **completely independent and decoupled**. There are no runtime dependencies, hardcoded links, or required couplings between them. You can install and use any single skill on its own without installing the others.
+The five skills are **completely independent and decoupled**. There are no runtime dependencies, hardcoded links, or required couplings between them. You can install and use any single skill on its own without installing the others.
 
 When used together across a larger project lifecycle, they form a natural, closed-loop development pipeline:
 
 ```mermaid
 flowchart LR
     CM["🎯 Context Matrix\n(Prompt & Task Architecture)\n8 Frameworks • Selection Engine • Quality Rubric"] -->|"Grounded Task Specification\n& Context-Aware Prompt"| A["📐 Project Blueprint\n(Planning & Approval Gate)\nPRD • TRD • UI/UX • Schema • Flow"]
-    A -->|"Approved Specifications\n& Implementation Roadmap"| Dev["⚙️ Implementation Phase\n(Agent Code Execution)"]
+    A -->|"Approved Architecture\n& UI Specifications"| CC["🎨 Chroma-Craft\n(Color & Theme Engine)\nDomain Archetypes • Gradients • WCAG Tokens"]
+    CC -->|"Verified Design Tokens\n& Semantic Styling"| Dev["⚙️ Implementation Phase\n(Agent Code Execution)"]
     Dev -->|"Completed Milestone\n& Verified Codebase"| B["🔄 Project Sync\n(Documentation Reconciliation)\nDocs • README • Gitignore"]
     B -->|"Synchronized Files\n& Clean Working Tree"| C["🏗️ Commit Architect\n(History Architecture & Slicing)\nAtomic Commits • Logical History"]
 
     style CM fill:#fce4ec,stroke:#c2185b,stroke-width:2px
     style A fill:#e1f5fe,stroke:#0288d1,stroke-width:2px
+    style CC fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
     style Dev fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
     style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
@@ -56,9 +59,10 @@ flowchart LR
 
 * **Step 0 (Prompt & Framework Architecture):** **Context Matrix** inspects repository context, selects the optimal prompt framework from 8 modules (CLARITY, SOCRATES, ANTICIPATE, PARTNER, TRUST, RIPPLE, CATCH, MAGIC), bounds negative constraints, and constructs a testable, high-fidelity prompt.
 * **Step 1 (Before Implementation):** **Project Blueprint** conducts targeted clarification, drafts synchronized architectural specifications with Mermaid diagrams, audits cross-document consistency, and enforces human sign-off before coding starts.
-* **Step 2 (During/After Implementation):** The agent writes and tests the software.
-* **Step 3 (Post-Implementation Reconciliation):** **Project Sync** inspects changed files, updates relevant `README.md` sections, updates `.gitignore`, quarantines temporary scratchpads into `.agent/scratch/`, and outputs a factual completion report.
-* **Step 4 (Version Control Architecture):** **Commit Architect** reviews the working tree, partitions the completed work into dependency-ordered atomic slices, validates staged diffs, and records clean commits with natural developer messages.
+* **Step 2 (Visual Architecture & Frontend Styling):** **Chroma-Craft** evaluates website genre (e-commerce, corporate, hackathon, portfolio, fintech), applies strict anti-distraction / anti-jigmig rules, calibrates WCAG 2.1 AA/AAA contrast, and provides verified CSS tokens and linear gradients.
+* **Step 3 (During/After Implementation):** The agent writes and tests the software.
+* **Step 4 (Post-Implementation Reconciliation):** **Project Sync** inspects changed files, updates relevant `README.md` sections, updates `.gitignore`, quarantines temporary scratchpads into `.agent/scratch/`, and outputs a factual completion report.
+* **Step 5 (Version Control Architecture):** **Commit Architect** reviews the working tree, partitions the completed work into dependency-ordered atomic slices, validates staged diffs, and records clean commits with natural developer messages.
 
 ---
 
@@ -113,6 +117,22 @@ flowchart LR
 * **Verification Scripting:** Pure Python stdlib tools: `select-framework.py`, `evaluate-prompt.py`, `test-context-matrix.py`.
 * **Deep Dive:** Read the [Context Matrix Guide](./context-matrix/README.md).
 
+### 5. Chroma-Craft 🎨
+
+* **Core Purpose:** Stops AI coding assistants from generating unreadable, chaotic, or visually distracting website themes and buttons ("jigmig", flashy neon on white backgrounds, or muddy dark modes).
+* **Key Mechanisms:**
+  * **Canonical 46-Color Library:** 41 mandatory base colors + 5 curated complementary accents. Strict blue constraint: strictly limited to 7 canonical blues (`Ice`, `Baby`, `Ocean`, `Midnight`, `Electric`, `Arctic`, `Steel`).
+  * **Domain Archetypes & The "Anti-Jigmig" Law:** Tailors color discipline to the website topic:
+    * *E-Commerce & Retail:* Pristine `#FBFBFD` Snow White canvas ensures accurate product photography colors; high-conversion CTAs (`Amber Gold #F59E0B` or `Forest Green #228B22`). Strictly forbids multi-color mesh gradients or shiny overlays behind product listings.
+    * *Corporate & Enterprise B2B:* Authoritative `Steel Blue`, `Ocean Blue`, and `Midnight Blue` with clean neutral cards. Strictly forbids game-like glitter, neon buttons, or animated borders.
+    * *Hackathons & AI Showcases:* High-voltage, memorable dark canvas in `#121214` Charcoal Onyx with radiant `Electric Blue`, `Cyan`, and `Royal Purple` neon accents for judges.
+    * *Personal Portfolios & Creative:* Minimalist Signature Duos (`Terracotta #E07A5F` + `Ivory White #FFFFF0` or `Electric Blue` + `Charcoal Onyx`) with editorial typography.
+  * **Website Section-by-Section Blueprints:** Color and border rules for Sticky Navbar, Hero First Fold, Feature Grid Cards, Pricing Tables, CTA Conversion Banners, and Footer Base.
+  * **Gradient Studio:** Mathematically harmonized CSS formulas for background washes, cyber nebula heroes, 2-stop CTA buttons, and glassmorphic overlays (`backdrop-filter: blur()`).
+  * **WCAG 2.1 Contrast Engine:** Relative luminance ($L$) and contrast ratio ($CR$) calculations ensuring normal text satisfies AA ($\ge 4.5:1$) or AAA ($\ge 7.0:1$) and large UI meets $\ge 3.0:1$.
+* **Verification Scripting:** Pure Python stdlib tools: `palette-generator.py`, `wcag-checker.py`, `token-exporter.py`, `test-chroma-craft.py`.
+* **Deep Dive:** Read the [Chroma-Craft Guide](./chroma-craft/README.md).
+
 ---
 
 ## Independent Usage & Installation
@@ -130,6 +150,7 @@ When installed in your project's `.agents/skills/` directory (or globally), Goog
 /project-blueprint [feature] # Pre-implementation planning, 5 specifications, human approval gate
 /project-sync [iteration]    # Reconciles README.md and .gitignore, quarantines scratchpads
 /commit-architect [work]     # Plans, validates staged diffs, and creates atomic Git commits
+/chroma-craft [domain]       # Recommends accessible palettes, CSS gradients, and tokens for websites
 ```
 
 Arguments following the command are passed directly to the skill instructions. For example:
@@ -138,6 +159,8 @@ Arguments following the command are passed directly to the skill instructions. F
 * `/project-blueprint Design an email invitation system for team administrators`
 * `/project-sync Reconcile documentation after implementing Redis rate limiting`
 * `/commit-architect Create atomic commits for the authentication overhaul`
+* `/chroma-craft ecommerce Design a high-conversion palette for an artisanal footwear store`
+* `/chroma-craft hackathon Create dark-mode cyber nebula tokens and gradients`
 
 ---
 
@@ -246,25 +269,41 @@ cp -r /path/to/agent-dev-skills/commit-architect/skill/* .cursor/skills/commit-a
 cp /path/to/agent-dev-skills/commit-architect/integrations/cursor/commit-architect.mdc .cursor/rules/
 ```
 
-#### Option E: Install ALL Four Skills in One Step
+#### Option E: Install ONLY Chroma-Craft
+```bash
+# In your target repository root:
+mkdir -p .agents/skills/chroma-craft
+cp -r /path/to/agent-dev-skills/chroma-craft/skill/* .agents/skills/chroma-craft/
+
+# Or for Claude Code:
+mkdir -p .claude/skills/chroma-craft
+cp -r /path/to/agent-dev-skills/chroma-craft/skill/* .claude/skills/chroma-craft/
+
+# Or for Cursor:
+mkdir -p .cursor/skills/chroma-craft .cursor/rules
+cp -r /path/to/agent-dev-skills/chroma-craft/skill/* .cursor/skills/chroma-craft/
+cp /path/to/agent-dev-skills/chroma-craft/integrations/cursor/chroma-craft.mdc .cursor/rules/
+```
+
+#### Option F: Install ALL Five Skills in One Step
 ```bash
 # In your target repository root (for Google Antigravity):
 mkdir -p .agents/skills
-for skill in context-matrix project-blueprint project-sync commit-architect; do
+for skill in context-matrix project-blueprint chroma-craft project-sync commit-architect; do
   mkdir -p .agents/skills/$skill
   cp -r /path/to/agent-dev-skills/$skill/skill/* .agents/skills/$skill/
 done
 
 # Or for Claude Code:
 mkdir -p .claude/skills
-for skill in context-matrix project-blueprint project-sync commit-architect; do
+for skill in context-matrix project-blueprint chroma-craft project-sync commit-architect; do
   mkdir -p .claude/skills/$skill
   cp -r /path/to/agent-dev-skills/$skill/skill/* .claude/skills/$skill/
 done
 
 # Or for Cursor:
 mkdir -p .cursor/skills .cursor/rules
-for skill in context-matrix project-blueprint project-sync commit-architect; do
+for skill in context-matrix project-blueprint chroma-craft project-sync commit-architect; do
   mkdir -p .cursor/skills/$skill
   cp -r /path/to/agent-dev-skills/$skill/skill/* .cursor/skills/$skill/
 done
@@ -282,7 +321,7 @@ If you prefer having all four skills available across **every workspace on your 
   * **Linux / macOS:** `~/.gemini/config/skills/<skill-name>/`
   ```bash
   mkdir -p ~/.gemini/config/skills
-  for skill in context-matrix project-blueprint project-sync commit-architect; do
+  for skill in context-matrix project-blueprint chroma-craft project-sync commit-architect; do
     mkdir -p ~/.gemini/config/skills/$skill
     cp -r /path/to/agent-dev-skills/$skill/skill/* ~/.gemini/config/skills/$skill/
   done
@@ -291,7 +330,7 @@ If you prefer having all four skills available across **every workspace on your 
 * **Claude Code:**
   ```bash
   mkdir -p ~/.claude/skills
-  for skill in context-matrix project-blueprint project-sync commit-architect; do
+  for skill in context-matrix project-blueprint chroma-craft project-sync commit-architect; do
     mkdir -p ~/.claude/skills/$skill
     cp -r /path/to/agent-dev-skills/$skill/skill/* ~/.claude/skills/$skill/
   done
@@ -300,7 +339,7 @@ If you prefer having all four skills available across **every workspace on your 
 * **Cursor:**
   ```bash
   mkdir -p ~/.cursor/skills
-  for skill in context-matrix project-blueprint project-sync commit-architect; do
+  for skill in context-matrix project-blueprint chroma-craft project-sync commit-architect; do
     mkdir -p ~/.cursor/skills/$skill
     cp -r /path/to/agent-dev-skills/$skill/skill/* ~/.cursor/skills/$skill/
   done
@@ -376,16 +415,43 @@ All four skills adhere to the open [Agent Skills Specification](https://agentski
 3. **Enforces Boundaries:** Keeps planning separate from code generation; systematically compares bounded options.
 4. **Delivers Tailored Plan:** Outputs trade-off matrix, failure modes, SLA evaluation criteria, and phased roadmap.
 
+### Example 5: Chroma-Craft in Action
+**User Prompt:**
+> *"/chroma-craft ecommerce Design an accessible light theme and CTA gradient for an organic coffee roastery store."*
+
+**Agent Flow:**
+1. **Identifies Domain & Tone:** Selects E-Commerce & Retail archetype with anti-jigmig rules (clean, product-first, zero distracting mesh behind beans).
+2. **Assigns Surfaces & Hierarchy:**
+   - Background Base: `#FBFBFD` Snow White (allows coffee packaging imagery to render authentically).
+   - Card Containers: `#F8F6F0` Pearl White with `1px solid #C0C0C8` Silver keyline.
+   - Text & Pricing: `#121214` Charcoal Onyx (18.10:1 AAA contrast).
+   - High-Conversion CTA: `linear-gradient(135deg, #F59E0B 0%, #AF6E4D 100%)` (Amber Gold to Caramel Brown) with `#121214` bold text (8.71:1 AAA contrast).
+3. **Audits Accessibility:** Runs `wcag-checker.py "#121214" "#F59E0B"` to verify 100% WCAG AA/AAA compliance.
+4. **Exports Tokens:** Runs `token-exporter.py ecommerce --format css` delivering production-ready CSS variables for the storefront.
+
 ---
 
 ## Repository Structure
 
-The actual structure of the `agent-dev-skills` collection is organized as four standalone sibling skills:
+The actual structure of the `agent-dev-skills` collection is organized as five standalone sibling skills:
 
 ```text
 agent-dev-skills/
 │
 ├── README.md                      # Central collection landing page & catalog (this document)
+│
+├── chroma-craft/                  # Independent Skill: Web Palette & Design System Engine
+│   ├── README.md                  # Comprehensive skill documentation
+│   ├── LICENSE                    # MIT License
+│   ├── AUTHORS                    # Authorship attribution
+│   ├── NOTICE                     # Legal disclaimers & trademark notices
+│   ├── skill/                     # Canonical Open Agent Skill
+│   │   ├── SKILL.md               # Main skill manifest with YAML frontmatter
+│   │   ├── references/            # 46-color roster, domain archetypes, sections, gradients, WCAG
+│   │   └── scripts/               # Pure Python stdlib palette generator, WCAG checker & exporter
+│   ├── integrations/              # Multi-platform adapters (Antigravity, Claude, Cursor, Codex)
+│   ├── examples/                  # 4 real-world themes (E-commerce, Corporate, Hackathon, Portfolio)
+│   └── docs/                      # Architecture, color matrix, domain guidelines, portability
 │
 ├── context-matrix/                # Independent Skill: Prompt Architecture & Framework Engine
 │   ├── README.md                  # Comprehensive skill documentation
@@ -455,6 +521,7 @@ For specific contribution guidelines, see:
 * [Commit Architect Contributing Guide](./commit-architect/docs/contributing.md)
 * [Project Sync Contributing Guide](./project-sync/docs/contributing.md)
 * [Project Blueprint Contributing Guide](./project-blueprint/docs/contributing.md)
+* [Chroma-Craft Contributing Guide](./chroma-craft/docs/contributing.md)
 
 ---
 
@@ -487,6 +554,7 @@ See individual repository license files:
 * [Commit Architect License](./commit-architect/LICENSE)
 * [Project Sync License](./project-sync/LICENSE)
 * [Project Blueprint License](./project-blueprint/LICENSE)
+* [Chroma-Craft License](./chroma-craft/LICENSE)
 
 ---
 
@@ -513,6 +581,7 @@ All product names, trademarks, and registered trademarks are property of their r
 * [Commit Architect Repository Guide](./commit-architect/README.md)
 * [Project Sync Repository Guide](./project-sync/README.md)
 * [Project Blueprint Repository Guide](./project-blueprint/README.md)
+* [Chroma-Craft Repository Guide](./chroma-craft/README.md)
 
 ### Standards & Official Upstream Documentation
 * [Agent Skills Specification](https://agentskills.io)

@@ -10,7 +10,7 @@ Chroma-Craft enforces a strict three-tier token hierarchy compliant with the W3C
 
 ```mermaid
 flowchart TD
-    Tier1["Tier 1: Global Primitives\n(The 46 Canonical Colors: #FBFBFD, #0077BE, #121214...)"]
+    Tier1["Tier 1: Global Primitives\n(The 52 Canonical Colors: #FBFBFD, #0077BE, #121214, #060814...)"]
     --> Tier2["Tier 2: Semantic Intent Tokens\n(background-base, surface-card, brand-primary, accent-highlight, text-primary)"]
     --> Tier3["Tier 3: Component-Scoped Tokens\n(btn-primary-bg, navbar-glass-surface, card-border, pricing-badge-bg)"]
     

@@ -5,7 +5,7 @@ palette-generator.py - Chroma-Craft Color Palette & Gradient Recommendation Engi
 Generates 2-color, 3-color (60-30-10), and 4-color design token palettes,
 domain-specific schemes (E-commerce, Corporate, Hackathon, Portfolio, etc.),
 website section recommendations, and CSS gradient formulas using the official
-Chroma-Craft 46-color library.
+Chroma-Craft 52-color library.
 
 Author: SWAYAM KIRAN PRABHU
 Part of chroma-craft (agent-dev-skills)
@@ -65,7 +65,7 @@ def evaluate_wcag(contrast: float) -> dict:
     }
 
 # ==============================================================================
-# 1. THE CANONICAL COLOR ROSTER (41 BASE + 5 CURATED COMPLEMENTARY ACCENTS)
+# 1. THE CANONICAL COLOR ROSTER (41 BASE + 5 CURATED + 6 COSMIC RIBBON ACCENTS)
 # ==============================================================================
 
 COLOR_ROSTER = {
@@ -129,7 +129,15 @@ COLOR_ROSTER = {
     "Sage Green": {"hex": "#9CAF88", "category": "Curated Accents", "type": "structural-organic", "tone": "muted-sage"},
     "Amber Gold": {"hex": "#F59E0B", "category": "Curated Accents", "type": "action-conversion", "tone": "vibrant-amber"},
     "Charcoal Onyx": {"hex": "#121214", "category": "Curated Accents", "type": "surface-dark", "tone": "neutral-dark-surface"},
-    "Blush Peach": {"hex": "#FEE2E2", "category": "Curated Accents", "type": "surface-wash", "tone": "soft-peach"}
+    "Blush Peach": {"hex": "#FEE2E2", "category": "Curated Accents", "type": "surface-wash", "tone": "soft-peach"},
+
+    # --- Cosmic Ribbon & Luminous Accents (6 Spectral Shades) ---
+    "Neon Mint Glow": {"hex": "#A1EFD8", "category": "Cosmic Accents", "type": "accent-glow", "tone": "iridescent-mint"},
+    "Warm Amber Gold": {"hex": "#FBBF90", "category": "Cosmic Accents", "type": "accent-light", "tone": "incandescent-gold"},
+    "Electric Violet": {"hex": "#713F91", "category": "Cosmic Accents", "type": "brand-primary", "tone": "mid-tone-violet"},
+    "Spectral Indigo Cyan": {"hex": "#6B8EBA", "category": "Cosmic Accents", "type": "accent-sheen", "tone": "cool-indigo-cyan"},
+    "Deep Plum Shadow": {"hex": "#5D2C5B", "category": "Cosmic Accents", "type": "brand-deep", "tone": "dark-plum-shadow"},
+    "Cosmic Obsidian": {"hex": "#060814", "category": "Cosmic Accents", "type": "surface-dark", "tone": "midnight-obsidian"}
 }
 
 # Lookup map by uppercase hex
@@ -537,6 +545,15 @@ TWO_COLOR_DUOS = [
         "contrast_on_dark": "9.45:1 (Passes AAA)",
         "contrast_on_light": "3.2:1 (Large CTA Button with Charcoal Onyx label)",
         "best_for": "Retail Banners, Direct-to-Consumer landing pages"
+    },
+    {
+        "name": "Cosmic Luminous Duo",
+        "dominant_surface": "Cosmic Obsidian (#060814)",
+        "accent_cta": "Neon Mint Glow (#A1EFD8)",
+        "light_inversion": "Snow White (#FBFBFD) + Electric Violet (#713F91)",
+        "contrast_on_dark": "15.06:1 (Passes AAA)",
+        "contrast_on_light": "7.20:1 (Passes AAA)",
+        "best_for": "Next-Gen AI Products, Cyber Showcases, Futuristic Dark Frontends"
     }
 ]
 
@@ -564,6 +581,14 @@ THREE_COLOR_60_30_10 = [
         "ratio_10": {"color": "Gold (#D4AF37)", "role": "10% Premium badges, active indicators, CTA buttons"},
         "wcag_body_contrast": "16.4:1 (Chocolate Brown text on Ivory White)",
         "wcag_cta_contrast": "4.8:1 (Chocolate Brown text on Gold badge)"
+    },
+    {
+        "name": "Cosmic Ribbon 60-30-10",
+        "ratio_60": {"color": "Cosmic Obsidian (#060814)", "role": "60% Midnight-tinted cosmic canvas"},
+        "ratio_30": {"color": "Electric Violet (#713F91) & Deep Plum Shadow (#5D2C5B)", "role": "30% Structural ribbon body, cards, and loop frames"},
+        "ratio_10": {"color": "Neon Mint Glow (#A1EFD8) & Warm Amber Gold (#FBBF90)", "role": "10% Luminous rim glow, action CTAs, incandescent highlights"},
+        "wcag_body_contrast": "19.30:1 (Snow White text on Cosmic Obsidian)",
+        "wcag_cta_contrast": "15.06:1 (Cosmic Obsidian text on Neon Mint Glow CTA)"
     }
 ]
 
@@ -596,6 +621,18 @@ GRADIENT_STUDIO = {
             "type": "Radial Mesh",
             "css": "radial-gradient(circle at 20% 20%, #0066FF 0%, transparent 40%), radial-gradient(circle at 80% 80%, #7851A9 0%, transparent 40%), #121214",
             "recommended_use": "Futuristic Hero Canvas, Developer Showcases"
+        },
+        {
+            "name": "Cosmic Ribbon Void",
+            "type": "Linear 135deg",
+            "css": "linear-gradient(135deg, #060814 0%, #5D2C5B 35%, #713F91 70%, #A1EFD8 100%)",
+            "recommended_use": "Luminous Dark Heroes, AI & Web3 Product Launches"
+        },
+        {
+            "name": "Spectral Ribbon Flow",
+            "type": "Linear 135deg",
+            "css": "linear-gradient(135deg, #713F91 0%, #6B8EBA 50%, #FBBF90 100%)",
+            "recommended_use": "Iridescent Banners, Creative Developer Portfolios"
         }
     ],
     "cta_buttons": [
@@ -626,6 +663,20 @@ GRADIENT_STUDIO = {
             "css": "linear-gradient(135deg, #F59E0B 0%, #E07A5F 100%)",
             "text_color": "#121214 (Charcoal Onyx)",
             "recommended_use": "E-Commerce 'Add to Cart', Free Trial Signups"
+        },
+        {
+            "name": "Neon Mint Glow Action",
+            "type": "Linear 135deg",
+            "css": "linear-gradient(135deg, #A1EFD8 0%, #6B8EBA 100%)",
+            "text_color": "#060814 (Cosmic Obsidian)",
+            "recommended_use": "High-Impact Dark Mode Conversion CTA, Live Launch Buttons"
+        },
+        {
+            "name": "Warm Amber Incandescent",
+            "type": "Linear 135deg",
+            "css": "linear-gradient(135deg, #FBBF90 0%, #713F91 100%)",
+            "text_color": "#060814 (Cosmic Obsidian)",
+            "recommended_use": "Luminous Edge Highlights, Featured Tier Buttons"
         }
     ],
     "surface_overlays": [
@@ -649,6 +700,13 @@ GRADIENT_STUDIO = {
             "css": "linear-gradient(135deg, rgba(18, 18, 20, 0.75) 0%, rgba(25, 25, 112, 0.25) 100%)",
             "backdrop_filter": "blur(16px)",
             "recommended_use": "Dark-mode modals, sticky navigation, code preview cards"
+        },
+        {
+            "name": "Cosmic Obsidian Glass",
+            "type": "Deep Dark Glassmorphic Overlay",
+            "css": "linear-gradient(135deg, rgba(6, 8, 20, 0.85) 0%, rgba(93, 44, 91, 0.25) 100%)",
+            "backdrop_filter": "blur(16px)",
+            "recommended_use": "Deep cosmic navigation bars, frosted dark modals, sticky headers"
         }
     ]
 }
@@ -735,7 +793,7 @@ def list_colors_report() -> str:
     lines = [
         "================================================================================",
         "                     CHROMA-CRAFT COMPLETE COLOR ROSTER                         ",
-        "            (41 Mandatory Base Colors + 5 Curated Complementary Accents)        ",
+        "     (41 Mandatory Base Colors + 5 Curated Accents + 6 Cosmic Ribbon Accents)   ",
         "================================================================================",
         f"{'Color Name':<20} | {'Hex Code':<9} | {'Category':<22} | {'Relative Lum':<12}",
         "-" * 80
@@ -799,7 +857,7 @@ def main():
     subparsers = parser.add_subparsers(dest="command")
 
     # list-colors
-    subparsers.add_parser("list-colors", help="List all 46 canonical colors with hex and luminance")
+    subparsers.add_parser("list-colors", help="List all 52 canonical colors with hex and luminance")
 
     # list-domains
     subparsers.add_parser("list-domains", help="List all domain archetypes with aesthetic directives")

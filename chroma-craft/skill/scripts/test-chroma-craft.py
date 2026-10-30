@@ -3,7 +3,7 @@
 test-chroma-craft.py - Comprehensive Chroma-Craft Test Suite
 
 Validates:
-1. Canonical 46-color roster (41 base + 5 curated accents) with strict hex codes.
+1. Canonical 52-color roster (41 base + 5 curated accents + 6 cosmic ribbon accents) with strict hex codes.
 2. Strict blue roster integrity (only the 7 permitted blues).
 3. WCAG 2.1 relative luminance and contrast ratio mathematical accuracy.
 4. Domain archetypes and aesthetic directives integrity.
@@ -45,7 +45,7 @@ spec_token.loader.exec_module(token_mod)
 
 def test_color_roster_exactness():
     roster = palette_mod.COLOR_ROSTER
-    assert len(roster) == 46, f"Expected exactly 46 colors, got {len(roster)}"
+    assert len(roster) == 52, f"Expected exactly 52 colors, got {len(roster)}"
 
     expected_colors = {
         # Neutrals (6)
@@ -101,7 +101,14 @@ def test_color_roster_exactness():
         "Sage Green": "#9CAF88",
         "Amber Gold": "#F59E0B",
         "Charcoal Onyx": "#121214",
-        "Blush Peach": "#FEE2E2"
+        "Blush Peach": "#FEE2E2",
+        # Cosmic Ribbon & Luminous Accents (6)
+        "Neon Mint Glow": "#A1EFD8",
+        "Warm Amber Gold": "#FBBF90",
+        "Electric Violet": "#713F91",
+        "Spectral Indigo Cyan": "#6B8EBA",
+        "Deep Plum Shadow": "#5D2C5B",
+        "Cosmic Obsidian": "#060814"
     }
 
     for name, hex_code in expected_colors.items():
@@ -111,7 +118,7 @@ def test_color_roster_exactness():
     # Strict blue check: ensure no unexpected blues are in the blues category
     blues_in_roster = [name for name, data in roster.items() if data["category"] == "Blues"]
     assert len(blues_in_roster) == 7, f"Blues list must have strictly 7 colors, found {len(blues_in_roster)}"
-    print("  [PASS] Canonical 46-color roster and strict blue list verified.")
+    print("  [PASS] Canonical 52-color roster and strict blue list verified.")
 
 
 def test_wcag_mathematics():
@@ -127,6 +134,10 @@ def test_wcag_mathematics():
     # Charcoal Onyx vs Snow White
     cr = wcag_mod.calculate_contrast("#121214", "#FBFBFD")
     assert cr > 18.0, f"Expected >18:1 contrast, got {cr}"
+
+    # Cosmic Obsidian vs Neon Mint Glow
+    cr_cosmic = wcag_mod.calculate_contrast("#060814", "#A1EFD8")
+    assert cr_cosmic > 15.0, f"Expected >15:1 contrast, got {cr_cosmic}"
 
     eval_data = wcag_mod.evaluate_wcag(cr)
     assert eval_data["aa_normal_text"] is True

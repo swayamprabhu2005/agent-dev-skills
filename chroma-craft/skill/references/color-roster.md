@@ -1,6 +1,6 @@
 # Chroma-Craft Canonical Color Roster
 
-> **The definitive 46-color palette library (41 Mandatory Base Colors + 5 Curated Complementary Accents).**  
+> **The definitive 52-color palette library (41 Mandatory Base Colors + 5 Curated Complementary Accents + 6 Cosmic Ribbon & Luminous Accents).**  
 > Every color is mathematically calibrated for sRGB relative luminance, WCAG 2.1 accessibility, and modern web frontend tokens.
 
 ---
@@ -15,7 +15,7 @@ Chroma-Craft enforces a curated library of exact hexadecimal color values.
 
 ---
 
-## 2. Complete Roster Table (46 Colors)
+## 2. Complete Roster Table (52 Colors)
 
 | Color Name | Hex Code | Category | RGB | Relative Luminance ($L$) | Semantic UI Role |
 | :--- | :---: | :--- | :---: | :---: | :--- |
@@ -65,6 +65,12 @@ Chroma-Craft enforces a curated library of exact hexadecimal color values.
 | **Amber Gold** | `#F59E0B` | Curated Accents | `(245, 158, 11)` | 0.4389 | High-Conversion Commerce CTA / Star Icon |
 | **Charcoal Onyx** | `#121214` | Curated Accents | `(18, 18, 20)` | 0.0061 | Modern Dark Canvas / 18:1 Light Body Text |
 | **Blush Peach** | `#FEE2E2` | Curated Accents | `(254, 226, 226)` | 0.8095 | Soft Background Wash / Subtle Hover Pill |
+| **Neon Mint Glow** | `#A1EFD8` | Cosmic Accents | `(161, 239, 216)` | 0.7427 | Iridescent Rim Glow / High-Visibility Cyber Accent / Focus Ring |
+| **Warm Amber Gold** | `#FBBF90` | Cosmic Accents | `(251, 191, 144)` | 0.5978 | Incandescent Edge Lighting / Luminous Highlight / Badge Accent |
+| **Electric Violet** | `#713F91` | Cosmic Accents | `(113, 63, 145)` | 0.0911 | Mid-Tone Ribbon Body / Brand Anchor / Deep Action Surface |
+| **Spectral Indigo Cyan** | `#6B8EBA` | Cosmic Accents | `(107, 142, 186)` | 0.2602 | Iridescent Cool Sheen / Ambient Secondary Tint / Structural Accent |
+| **Deep Plum Shadow** | `#5D2C5B` | Cosmic Accents | `(93, 44, 91)` | 0.0488 | Shadowed Loop Underside / Deep Wine Card Surface / Dark Accent |
+| **Cosmic Obsidian** | `#060814` | Cosmic Accents | `(6, 8, 20)` | 0.0026 | Deep Near-Black Cosmic Canvas (Midnight Blue Tint) / Viewport Base |
 
 ---
 
@@ -88,3 +94,11 @@ Clean readability is non-negotiable in digital design. Chroma-Craft provides 3 d
 - **Teal (`#008080`)** and **Sage Green (`#9CAF88`)**: Reassuring, organic, and calm.
 - **Forest Green (`#228B22`)**: The definitive high-conversion action tone for checkout and positive financial telemetry.
 - **Terracotta (`#E07A5F`)** and **Amber Gold (`#F59E0B`)**: Warm, inviting editorial accents and high-visibility badges.
+
+### D. Cosmic Ribbon & Luminous Accents (The Spectral Flow)
+- **Neon Mint Glow (`#A1EFD8`)**: The vibrant iridescent green/teal rim lining the outer and lower contours. Exceptional 15.06:1 AAA contrast against Cosmic Obsidian.
+- **Warm Amber Gold (`#FBBF90`)**: The luminous, incandescent edge lighting on the top-right ribbon. Warm radiant highlight with 12.31:1 AAA contrast on dark canvas.
+- **Electric Violet (`#713F91`)**: The mid-tone purple looping through the primary body of the ribbon. Strong brand anchor and button gradient foundation.
+- **Spectral Indigo Cyan (`#6B8EBA`)**: The iridescent cool-blue sheen visible across the central and inner curves. Cool transition tint and secondary label.
+- **Deep Plum Shadow (`#5D2C5B`)**: The dark magenta/plum shades along the shadowed underside of the loops. Rich wine surface and dark-mode depth layer.
+- **Cosmic Obsidian (`#060814`)**: The deep near-black background tinted with subtle midnight blue. Ultimate high-contrast canvas achieving 19.30:1 AAA contrast with white text without OLED smearing.

@@ -6,7 +6,7 @@ globs: "**/*.{css,scss,tsx,jsx,vue,svelte,html,tailwind.config.js,tailwind.confi
 # Chroma-Craft Cursor Rule
 
 When writing or editing CSS, Tailwind CSS, or frontend components:
-- Always use the 46-color canonical palette in `chroma-craft/skill/references/color-roster.md`.
+- Always use the 52-color canonical palette in `chroma-craft/skill/references/color-roster.md`.
 - Adhere to the strict blue rule: only use `Ice Blue`, `Baby Blue`, `Ocean Blue`, `Midnight Blue`, `Electric Blue`, `Arctic Blue`, and `Steel Blue`.
 - Apply domain archetypes:
   - E-Commerce: Pristine Snow White (#FBFBFD) canvas, Amber Gold (#F59E0B) or Forest Green (#228B22) CTA. No noisy gradients behind product photos.

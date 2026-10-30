@@ -36,9 +36,9 @@ Do NOT use this skill to:
 
 ---
 
-## 2. The 46-Color Canonical Library
+## 2. The 52-Color Canonical Library
 
-Chroma-Craft operates on a mathematically calibrated roster of 46 exact hex shades:
+Chroma-Craft operates on a mathematically calibrated roster of 52 exact hex shades:
 
 ### A. The Mandatory Base Roster (41 Colors)
 1. **Neutrals & Whites (6):**
@@ -96,6 +96,14 @@ Chroma-Craft operates on a mathematically calibrated roster of 46 exact hex shad
 - `Amber Gold` (`#F59E0B`) — Vibrant high-conversion action button, star ratings.
 - `Charcoal Onyx` (`#121214`) — Modern dark-mode surface, ultra-crisp 18:1 light text.
 - `Blush Peach` (`#FEE2E2`) — Soft background wash, subtle card hover backplate.
+
+### C. Cosmic Ribbon & Luminous Accents (6 Spectral Shades)
+- `Neon Mint Glow` (`#A1EFD8`) — The vibrant iridescent green/teal rim lining the outer and lower contours.
+- `Warm Amber Gold` (`#FBBF90`) — The luminous, incandescent edge lighting on the top-right ribbon.
+- `Electric Violet` (`#713F91`) — The mid-tone purple looping through the primary body of the ribbon.
+- `Spectral Indigo Cyan` (`#6B8EBA`) — The iridescent cool-blue sheen visible across the central and inner curves.
+- `Deep Plum Shadow` (`#5D2C5B`) — The dark magenta/plum shades along the shadowed underside of the loops.
+- `Cosmic Obsidian` (`#060814`) — The deep near-black background tinted with subtle midnight blue.
 
 ---
 
@@ -168,16 +176,21 @@ Apply colors systematically across standard page sections:
 - **Cyber Nebula Hero (Hackathon):** `linear-gradient(135deg, #121214 0%, #191970 50%, #0066FF 100%)`
 - **Quantum Violet Pulse:** `linear-gradient(135deg, #36013F 0%, #7851A9 50%, #00E5FF 100%)`
 - **Champagne Silk (Luxury):** `linear-gradient(135deg, #FFFFF0 0%, #E8DCC4 50%, #F8F6F0 100%)`
+- **Cosmic Ribbon Void:** `linear-gradient(135deg, #060814 0%, #5D2C5B 35%, #713F91 70%, #A1EFD8 100%)`
+- **Spectral Ribbon Flow:** `linear-gradient(135deg, #713F91 0%, #6B8EBA 50%, #FBBF90 100%)`
 
 ### High-Conversion CTA Gradients
 - **Electric Blue to Cyan:** `linear-gradient(135deg, #0066FF 0%, #00E5FF 100%)` (text: `#121214`)
 - **Amber Gold to Terracotta:** `linear-gradient(135deg, #F59E0B 0%, #E07A5F 100%)` (text: `#121214`)
 - **Gold to Caramel Brown:** `linear-gradient(135deg, #D4AF37 0%, #AF6E4D 100%)` (text: `#3D1C02`)
 - **Hot Pink to Magenta:** `linear-gradient(135deg, #FF69B4 0%, #FF00FF 100%)` (text: `#FBFBFD`)
+- **Neon Mint Glow Action:** `linear-gradient(135deg, #A1EFD8 0%, #6B8EBA 100%)` (text: `#060814`)
+- **Warm Amber Incandescent:** `linear-gradient(135deg, #FBBF90 0%, #713F91 100%)` (text: `#060814`)
 
 ### Glassmorphic Overlays
 - **Light Floating Surface:** `linear-gradient(135deg, rgba(251, 251, 253, 0.85) 0%, rgba(248, 246, 240, 0.65) 100%)` + `backdrop-filter: blur(12px)`
 - **Dark Modal Surface:** `linear-gradient(135deg, rgba(18, 18, 20, 0.80) 0%, rgba(25, 25, 112, 0.25) 100%)` + `backdrop-filter: blur(16px)`
+- **Cosmic Obsidian Glass:** `linear-gradient(135deg, rgba(6, 8, 20, 0.85) 0%, rgba(93, 44, 91, 0.25) 100%)` + `backdrop-filter: blur(16px)`
 
 ---
 
@@ -187,7 +200,7 @@ Chroma-Craft provides pure Python stdlib scripts in `scripts/`:
 
 ### 1. Palette & Domain Generator (`palette-generator.py`)
 ```bash
-# List all 46 canonical colors and luminances
+# List all 52 canonical colors and luminances
 python chroma-craft/skill/scripts/palette-generator.py list-colors
 
 # Generate domain-specific design tokens (CSS, Tailwind, or JSON)

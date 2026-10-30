@@ -121,7 +121,7 @@ flowchart LR
 
 * **Core Purpose:** Stops AI coding assistants from generating unreadable, chaotic, or visually distracting website themes and buttons ("jigmig", flashy neon on white backgrounds, or muddy dark modes).
 * **Key Mechanisms:**
-  * **Canonical 46-Color Library:** 41 mandatory base colors + 5 curated complementary accents. Strict blue constraint: strictly limited to 7 canonical blues (`Ice`, `Baby`, `Ocean`, `Midnight`, `Electric`, `Arctic`, `Steel`).
+  * **Canonical 52-Color Library:** 41 mandatory base colors + 5 curated complementary accents + 6 cosmic ribbon luminous accents (`Neon Mint Glow`, `Warm Amber Gold`, `Electric Violet`, `Spectral Indigo Cyan`, `Deep Plum Shadow`, `Cosmic Obsidian`). Strict blue constraint: strictly limited to 7 canonical blues (`Ice`, `Baby`, `Ocean`, `Midnight`, `Electric`, `Arctic`, `Steel`).
   * **Domain Archetypes & The "Anti-Jigmig" Law:** Tailors color discipline to the website topic:
     * *E-Commerce & Retail:* Pristine `#FBFBFD` Snow White canvas ensures accurate product photography colors; high-conversion CTAs (`Amber Gold #F59E0B` or `Forest Green #228B22`). Strictly forbids multi-color mesh gradients or shiny overlays behind product listings.
     * *Corporate & Enterprise B2B:* Authoritative `Steel Blue`, `Ocean Blue`, and `Midnight Blue` with clean neutral cards. Strictly forbids game-like glitter, neon buttons, or animated borders.

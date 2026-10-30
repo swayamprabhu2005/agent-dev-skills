@@ -1,6 +1,6 @@
 # Chroma-Craft Complete Color Matrix
 
-> **Comprehensive specifications, color metrics, and pairing recommendations for all 46 canonical colors.**
+> **Comprehensive specifications, color metrics, and pairing recommendations for all 52 canonical colors.**
 
 ---
 
@@ -89,3 +89,16 @@
 | **Amber Gold** | `#F59E0B` | `(245, 158, 11)` | 0.4389 | Conversion CTA | High-conversion e-commerce "Add to Cart" |
 | **Charcoal Onyx** | `#121214` | `(18, 18, 20)` | 0.0061 | Dark Surface | Calibrated dark canvas, 18.1:1 light text |
 | **Blush Peach** | `#FEE2E2` | `(254, 226, 226)`| 0.8095 | Surface Wash | Soft background aura, card hover tint |
+
+---
+
+## 7. Cosmic Ribbon & Luminous Accents (6 Colors)
+
+| Name | Hex Code | RGB | HSL | Lum ($L$) | Role | Usage & Pairing Directives |
+| :--- | :---: | :---: | :---: | :---: | :--- | :--- |
+| **Neon Mint Glow** | `#A1EFD8` | `(161, 239, 216)` | `162°, 71%, 78%` | 0.7427 | Iridescent Rim Glow | Outer/lower contour highlight. Text MUST be `#060814` (15.1:1 AAA) or `#121214` (14.1:1 AAA). |
+| **Warm Amber Gold** | `#FBBF90` | `(251, 191, 144)` | `26°, 93%, 77%` | 0.5978 | Incandescent Edge | Top-right ribbon lighting. Text MUST be `#060814` (12.3:1 AAA). Pairs with Electric Violet. |
+| **Electric Violet** | `#713F91` | `(113, 63, 145)` | `277°, 39%, 41%` | 0.0911 | Primary Ribbon Body | Primary body of loop. White text `#FBFBFD` (7.20:1 AAA). Deep button gradient foundation. |
+| **Spectral Indigo Cyan** | `#6B8EBA` | `(107, 142, 186)` | `213°, 36%, 57%` | 0.2602 | Iridescent Sheen | Central & inner curves sheen. Contrast on Cosmic Obsidian is 5.89:1 AA. |
+| **Deep Plum Shadow** | `#5D2C5B` | `(93, 44, 91)` | `302°, 36%, 27%` | 0.0488 | Loop Shadow | Shadowed loop underside. White text `#FBFBFD` (10.28:1 AAA). Elevates cards on Cosmic Obsidian. |
+| **Cosmic Obsidian** | `#060814` | `(6, 8, 20)` | `231°, 54%, 5%` | 0.0026 | Cosmic Dark Canvas | Near-black background with subtle midnight blue tint. Light text `#FBFBFD` achieves 19.30:1 AAA. |

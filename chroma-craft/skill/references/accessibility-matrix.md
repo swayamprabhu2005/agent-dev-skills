@@ -52,6 +52,14 @@ This table summarizes verified contrast ratios for canonical Chroma-Craft combin
 | **Charcoal Onyx (`#121214`)** | **Amber Gold (`#F59E0B`)** | **8.71 : 1** | PASS | PASS | PASS | High-conversion "Add to Cart" button |
 | **Snow White (`#FBFBFD`)** | **Forest Green (`#228B22`)** | **4.25 : 1** | FAIL | PASS | FAIL | Large CTA buttons only (use bold >14pt) |
 | **Chocolate Brown (`#3D1C02`)**| **Ivory White (`#FFFFF0`)** | **15.24 : 1** | PASS | PASS | PASS | Luxury editorial body typography |
+| **Snow White (`#FBFBFD`)** | **Cosmic Obsidian (`#060814`)** | **19.30 : 1** | PASS | PASS | PASS | Cosmic dark canvas body text & headlines |
+| **Neon Mint Glow (`#A1EFD8`)** | **Cosmic Obsidian (`#060814`)** | **15.06 : 1** | PASS | PASS | PASS | Cosmic rim glow / active focus / status badge |
+| **Cosmic Obsidian (`#060814`)** | **Neon Mint Glow (`#A1EFD8`)** | **15.06 : 1** | PASS | PASS | PASS | High-conversion CTA button text on Neon Mint |
+| **Warm Amber Gold (`#FBBF90`)** | **Cosmic Obsidian (`#060814`)** | **12.31 : 1** | PASS | PASS | PASS | Luminous incandescent edge highlight on dark |
+| **Cosmic Obsidian (`#060814`)** | **Warm Amber Gold (`#FBBF90`)** | **12.31 : 1** | PASS | PASS | PASS | Luminous badge / button text on Warm Amber |
+| **Snow White (`#FBFBFD`)** | **Electric Violet (`#713F91`)** | **7.20 : 1** | PASS | PASS | PASS | Primary ribbon body / solid purple CTA text |
+| **Spectral Indigo Cyan (`#6B8EBA`)** | **Cosmic Obsidian (`#060814`)** | **5.89 : 1** | PASS | PASS | FAIL | Secondary labels & links on Cosmic Obsidian |
+| **Snow White (`#FBFBFD`)** | **Deep Plum Shadow (`#5D2C5B`)** | **10.28 : 1** | PASS | PASS | PASS | Shadowed loop underside / wine card text |
 
 ---
 

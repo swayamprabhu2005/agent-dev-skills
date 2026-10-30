@@ -52,6 +52,16 @@ The 2-Color system is the purest architectural expression of brand identity. It 
   - Dark Mode CTA: `Amber Gold` button with `Charcoal Onyx` text (7.3:1 AAA)
 - **Best Suited For:** Direct-to-Consumer e-commerce banners, High-urgency product drops.
 
+#### Recipe 2C-05: Cosmic Luminous Duo
+- **Dominant Canvas:** `Cosmic Obsidian` (`#060814`)
+- **Accent / Action:** `Neon Mint Glow` (`#A1EFD8`)
+- **Light Mode Inversion:** `Snow White` (`#FBFBFD`) + `Electric Violet` (`#713F91`)
+- **Typography Pairing:**
+  - Dark Mode: `Snow White` text on `Cosmic Obsidian` (19.3:1 AAA)
+  - Dark Mode CTA: `Neon Mint Glow` button with `Cosmic Obsidian` text (15.06:1 AAA)
+  - Light Mode CTA: `Electric Violet` button with `Snow White` text (7.20:1 AAA)
+- **Best Suited For:** Next-generation AI products, cyber launches, luminous developer demos.
+
 ---
 
 ## 2. The 3-Color System (The 60-30-10 Web Hierarchy)
@@ -95,6 +105,15 @@ pie title 60-30-10 Visual Weight Distribution
   - Body text on canvas: **18.1:1** (AAA)
   - White text on Forest Green CTA: **4.56:1** (AA)
   - Dark text on Amber Gold badge: **7.3:1** (AAA)
+
+#### Recipe 3C-04: Cosmic Ribbon Luminous Hierarchy
+- **60% Canvas:** `Cosmic Obsidian` (`#060814`)
+- **30% Structure:** `Electric Violet` (`#713F91`) ribbon body + `Deep Plum Shadow` (`#5D2C5B`) card surfaces + `Spectral Indigo Cyan` (`#6B8EBA`) borders.
+- **10% Action:** `Neon Mint Glow` (`#A1EFD8`) rim CTA + `Warm Amber Gold` (`#FBBF90`) incandescent badges.
+- **Contrast Check:**
+  - Body text on canvas (`#FBFBFD` on `#060814`): **19.30:1** (AAA)
+  - CTA button text (`#060814` on `#A1EFD8`): **15.06:1** (AAA)
+  - Badge text (`#060814` on `#FBBF90`): **12.31:1** (AAA)
 
 ---
 

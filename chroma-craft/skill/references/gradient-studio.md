@@ -1,7 +1,7 @@
 # Chroma-Craft Gradient Studio
 
 > **Mathematically Harmonized CSS Gradient Formulas.**  
-> Ready-to-copy CSS linear, radial, and mesh gradients engineered using the Chroma-Craft 46-color palette library.
+> Ready-to-copy CSS linear, radial, and mesh gradients engineered using the Chroma-Craft 52-color palette library.
 
 ---
 
@@ -80,6 +80,25 @@ Background linear gradients should provide subtle atmospheric depth without redu
 }
 ```
 
+### E. Cosmic Ribbon & Spectral Flow Backgrounds
+
+```css
+/* 1. Cosmic Ribbon Hero - Midnight obsidian through plum shadow and electric violet into neon mint glow */
+.bg-cosmic-ribbon-hero {
+  background: linear-gradient(135deg, #060814 0%, #5D2C5B 35%, #713F91 70%, #A1EFD8 100%);
+}
+
+/* 2. Spectral Ribbon Loop - Mid-tone electric violet across iridescent indigo cyan to warm amber gold */
+.bg-spectral-ribbon-loop {
+  background: linear-gradient(135deg, #713F91 0%, #6B8EBA 50%, #FBBF90 100%);
+}
+
+/* 3. Deep Void Anchor - Cosmic Obsidian to Deep Plum Shadow */
+.bg-cosmic-void-anchor {
+  background: linear-gradient(180deg, #060814 0%, #5D2C5B 100%);
+}
+```
+
 ---
 
 ## 2. Hero & Mesh Gradients
@@ -119,6 +138,14 @@ Hero banners create the visual signature of the website. These formulas use mult
     radial-gradient(circle at 85% 75%, rgba(120, 81, 169, 0.40) 0%, transparent 50%),
     radial-gradient(circle at 50% 50%, rgba(0, 229, 255, 0.15) 0%, transparent 60%);
   background-attachment: fixed;
+}
+```
+
+### 5. Cosmic Ribbon Flow (The Spectral 3D Ribbon Hero)
+```css
+.hero-cosmic-ribbon {
+  background: linear-gradient(135deg, #060814 0%, #5D2C5B 30%, #713F91 65%, #A1EFD8 100%);
+  color: #FBFBFD;
 }
 ```
 
@@ -176,6 +203,28 @@ Buttons require punchy contrast, crisp 2-stop transitions, and distinct hover st
 }
 ```
 
+### 5. Neon Mint Glow to Spectral Indigo Cyan (Luminous Dark Mode Action CTA)
+```css
+.btn-neon-mint-cta {
+  background: linear-gradient(135deg, #A1EFD8 0%, #6B8EBA 100%);
+  color: #060814; /* Cosmic Obsidian for 15.06:1 AAA contrast */
+  font-weight: 700;
+  border: none;
+  box-shadow: 0 4px 18px rgba(161, 239, 216, 0.35);
+}
+```
+
+### 6. Warm Amber Gold to Electric Violet (Incandescent Ribbon Edge Button)
+```css
+.btn-warm-amber-glow {
+  background: linear-gradient(135deg, #FBBF90 0%, #713F91 100%);
+  color: #060814;
+  font-weight: 700;
+  border: none;
+  box-shadow: 0 4px 18px rgba(251, 191, 144, 0.30);
+}
+```
+
 ---
 
 ## 4. Subtle Surface Overlays & Glassmorphism
@@ -210,6 +259,17 @@ Glassmorphism elevates cards, floating navigation bars, and modals above backgro
   background: linear-gradient(180deg, rgba(255, 255, 240, 0.90) 0%, rgba(232, 220, 196, 0.35) 100%);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(232, 220, 196, 0.6);
+}
+```
+
+### 4. Cosmic Obsidian Dark Glass (Deep Cosmic Viewport / Navigation)
+```css
+.glass-cosmic-obsidian {
+  background: linear-gradient(135deg, rgba(6, 8, 20, 0.85) 0%, rgba(93, 44, 91, 0.25) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(161, 239, 216, 0.2);
+  box-shadow: 0 8px 32px rgba(6, 8, 20, 0.6);
 }
 ```
 

@@ -15,7 +15,7 @@ Or add the following instruction to your project's `CLAUDE.md`:
 
 ```markdown
 ## Design & Color System
-When creating, styling, or auditing web UI, consult the Chroma-Craft skill in `chroma-craft/skill/SKILL.md`. Always adhere to the 46-color canonical library, strict blue rules, and domain archetypes.
+When creating, styling, or auditing web UI, consult the Chroma-Craft skill in `chroma-craft/skill/SKILL.md`. Always adhere to the 52-color canonical library, strict blue rules, and domain archetypes.
 ```
 
 ## CLI Verification

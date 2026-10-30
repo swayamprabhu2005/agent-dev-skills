@@ -50,9 +50,9 @@ flowchart TD
 
 ---
 
-## 1. The Canonical 46-Color Library
+## 1. The Canonical 52-Color Library
 
-Chroma-Craft operates on a strictly controlled roster of **41 base colors** plus **5 curated complementary accents**:
+Chroma-Craft operates on a strictly controlled roster of **41 base colors** plus **5 curated complementary accents** and **6 cosmic ribbon luminous accents**:
 
 ### A. The Mandatory Base Roster (41 Colors)
 
@@ -75,6 +75,14 @@ Chroma-Craft operates on a strictly controlled roster of **41 base colors** plus
 - `Amber Gold` (`#F59E0B`) — Vibrant high-conversion action button, star ratings.
 - `Charcoal Onyx` (`#121214`) — Modern dark-mode surface, ultra-crisp 18.1:1 light body text.
 - `Blush Peach` (`#FEE2E2`) — Soft background wash, subtle card hover aura.
+
+### C. Cosmic Ribbon & Luminous Accents (6 Spectral Shades)
+- `Neon Mint Glow` (`#A1EFD8`) — The vibrant iridescent green/teal rim lining the outer and lower contours.
+- `Warm Amber Gold` (`#FBBF90`) — The luminous, incandescent edge lighting on the top-right ribbon.
+- `Electric Violet` (`#713F91`) — The mid-tone purple looping through the primary body of the ribbon.
+- `Spectral Indigo Cyan` (`#6B8EBA`) — The iridescent cool-blue sheen visible across the central and inner curves.
+- `Deep Plum Shadow` (`#5D2C5B`) — The dark magenta/plum shades along the shadowed underside of the loops.
+- `Cosmic Obsidian` (`#060814`) — The deep near-black background tinted with subtle midnight blue.
 
 ---
 
@@ -136,6 +144,12 @@ background: linear-gradient(180deg, #FBFBFD 0%, #C6E2FF 100%);
 /* Cyber Nebula (Hackathon Dark Canvas) */
 background: linear-gradient(135deg, #121214 0%, #191970 50%, #0066FF 100%);
 
+/* Cosmic Ribbon Hero (Luminous Dark Canvas) */
+background: linear-gradient(135deg, #060814 0%, #5D2C5B 35%, #713F91 70%, #A1EFD8 100%);
+
+/* Spectral Ribbon Flow */
+background: linear-gradient(135deg, #713F91 0%, #6B8EBA 50%, #FBBF90 100%);
+
 /* Champagne Silk (Luxury) */
 background: linear-gradient(135deg, #FFFFF0 0%, #E8DCC4 50%, #F8F6F0 100%);
 ```
@@ -147,6 +161,12 @@ background: linear-gradient(135deg, #0066FF 0%, #00E5FF 100%); /* text: #121214 
 
 /* E-Commerce Add to Cart */
 background: linear-gradient(135deg, #F59E0B 0%, #E07A5F 100%); /* text: #121214 */
+
+/* Neon Mint Glow Action (Luminous Dark Mode CTA) */
+background: linear-gradient(135deg, #A1EFD8 0%, #6B8EBA 100%); /* text: #060814 */
+
+/* Warm Amber Incandescent */
+background: linear-gradient(135deg, #FBBF90 0%, #713F91 100%); /* text: #060814 */
 
 /* Luxury Tier Upgrade */
 background: linear-gradient(135deg, #D4AF37 0%, #AF6E4D 100%); /* text: #3D1C02 */
@@ -163,6 +183,11 @@ border: 1px solid rgba(192, 192, 200, 0.4);
 background: linear-gradient(135deg, rgba(18, 18, 20, 0.80) 0%, rgba(25, 25, 112, 0.25) 100%);
 backdrop-filter: blur(16px);
 border: 1px solid rgba(255, 255, 255, 0.08);
+
+/* Cosmic Obsidian Deep Glass (Dark Viewport / Modal) */
+background: linear-gradient(135deg, rgba(6, 8, 20, 0.85) 0%, rgba(93, 44, 91, 0.25) 100%);
+backdrop-filter: blur(16px);
+border: 1px solid rgba(161, 239, 216, 0.2);
 ```
 
 ---
@@ -208,14 +233,14 @@ chroma-craft/
 ├── .gitignore                         # Repository ignore rules
 ├── docs/                              # Deep technical specifications
 │   ├── architecture.md                # 3-tier token hierarchy & color theory
-│   ├── color-matrix.md                # Complete 46-color matrix with RGB, HSL & luminance
+│   ├── color-matrix.md                # Complete 52-color matrix with RGB, HSL & luminance
 │   ├── domain-guidelines.md           # In-depth domain guidelines & anti-jigmig rules
 │   ├── portability.md                 # Antigravity, Claude Code, Codex & Cursor setup
 │   └── contributing.md                # Contribution guidelines
 ├── skill/                             # The core Agent Skill package
 │   ├── SKILL.md                       # Canonical Agentskills.io manifest & prompt instructions
 │   ├── references/                    # Detailed reference documentation
-│   │   ├── color-roster.md            # The 41+5 color library and strict blue constraints
+│   │   ├── color-roster.md            # The 41+5+6 color library and strict blue constraints
 │   │   ├── domain-archetypes.md       # E-commerce, Corporate, Hackathon, Portfolio guidelines
 │   │   ├── website-sections.md        # Navbar, Hero, Cards, Pricing, Banner, Footer breakdown
 │   │   ├── palette-recipes.md         # 2-color, 3-color (60-30-10), and 4-color tokens
